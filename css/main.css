@@ -1,0 +1,228 @@
+:root {
+    /* Rustic Chef Kitchen Theme */
+    --primary: #556B2F;      /* Olive Green */
+    --secondary: #C65D3B;    /* Terracotta */
+    --accent: #D9A441;       /* Mustard Gold */
+
+    --background: #F8F5F0;   /* Cream */
+    --surface: #FFFDF8;      /* Warm White */
+
+    --text: #2E2E2E;         /* Charcoal */
+    --border: #D8D2C8;
+}
+
+/* everything */
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* header */
+
+header {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin-bottom: 5px;
+}
+
+/* nav */
+
+.page-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0;
+}
+
+.page-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.page-nav a:hover {
+    color: var(--accent);
+}
+
+/* main container stuff */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+}
+
+/* buttons */
+
+.btn {
+    background-color: var(--secondary);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #aa4e33;
+}
+
+.btn-2nd {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.btn-2nd:hover {
+    background-color: #465b24;
+}
+
+/* hero stuff */
+
+.hero {
+    background-color: var(--surface);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    background-color: #ddd;
+    border-radius: 10px;
+    min-height: 250px;
+}
+
+/* categories */
+
+.category-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.category-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    flex: 1;
+    min-width: 180px;
+}
+
+.category-image {
+    background-color: #ddd;
+    height: 150px;
+}
+
+.category-card p {
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* features */
+
+.features-section {
+    background-color: #ece6da;
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.feature {
+    flex: 1;
+}
+
+/* Grocery Tables */
+
+.food-types {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    background-color: var(--surface);
+}
+
+.food-types th {
+    background-color: var(--primary);
+    color: white;
+}
+
+.food-types th,
+.food-types td {
+    padding: 12px;
+    border: 1px solid var(--border);
+}
+
+/* Summary */
+
+.summary-box {
+    background-color: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.summary-box h2 {
+    color: var(--primary);
+}
+
+/* contact form */
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background-color: white;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--secondary);
+}
+
+/* footer*/
+footer {
+    background-color: var(--primary);
+    color: white;
+    margin-top: 40px;
+    padding: 25px;
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
