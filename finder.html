@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Finder - Chef Kitchen</title>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Logo</h1>
+            </div>
+            <p class="tagline">Find Meals. Plan Smart. Cook Easy</p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mealfinder.html" class="active">Meal Finder</a></li>
+                    <li><a href="grocerylist.html">Grocerey List</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <hr>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- Left Sidebar: Meal Finder Results -->
+        <aside class="sidebar-results">
+            <h2>Meal Finder</h2>
+
+            <div class="search-bar">
+                <span class="search-icon" aria-hidden="true">&#128269;</span>
+                <input type="text" placeholder="Search recipe..." aria-label="Search recipe">
+            </div>
+
+            <div class="filter-controls">
+                <select name="category" aria-label="Category">
+                    <option value="">Category</option>
+                </select>
+                <select name="meal-type" aria-label="Meal Type">
+                    <option value="">Meal Type</option>
+                </select>
+                <select name="diet" aria-label="Diet">
+                    <option value="">Diet</option>
+                </select>
+                <select name="sort-by" aria-label="Sort By">
+                    <option value="">Sort By</option>
+                </select>
+                <select name="max-price" aria-label="Max Price">
+                    <option value="">Max Price</option>
+                </select>
+            </div>
+
+            <ul class="recipe-results-list">
+                <!-- Recipe Card 1 -->
+                <li class="recipe-card">
+                    <div class="recipe-thumbnail-placeholder">
+                        <span class="image-icon" aria-hidden="true">&#128444;</span>
+                    </div>
+                    <div class="recipe-info">
+                        <div class="recipe-header">
+                            <h3>Chicken Salad</h3>
+                            <div class="stars" aria-label="4 out of 5 stars">
+                                &#9733;&#9733;&#9733;&#9733;&#9734;
+                            </div>
+                        </div>
+                        <p>description: We love chicken<br>and salad</p>
+                    </div>
+                </li>
+
+                <!-- Recipe Card 2 -->
+                <li class="recipe-card">
+                    <div class="recipe-thumbnail-placeholder">
+                        <span class="image-icon" aria-hidden="true">&#128444;</span>
+                    </div>
+                    <div class="recipe-info">
+                        <div class="recipe-header">
+                            <h3>Chicken Salad</h3>
+                            <div class="stars" aria-label="4 out of 5 stars">
+                                &#9733;&#9733;&#9733;&#9733;&#9734;
+                            </div>
+                        </div>
+                        <p>description: We love chicken<br>and salad</p>
+                    </div>
+                </li>
+
+                <!-- Recipe Card 3 -->
+                <li class="recipe-card">
+                    <div class="recipe-thumbnail-placeholder">
+                        <span class="image-icon" aria-hidden="true">&#128444;</span>
+                    </div>
+                    <div class="recipe-info">
+                        <div class="recipe-header">
+                            <h3>Chicken Salad</h3>
+                            <div class="stars" aria-label="4 out of 5 stars">
+                                &#9733;&#9733;&#9733;&#9733;&#9734;
+                            </div>
+                        </div>
+                        <p>description: We love chicken<br>and salad</p>
+                    </div>
+                </li>
+
+                <!-- Recipe Card 4 -->
+                <li class="recipe-card">
+                    <div class="recipe-thumbnail-placeholder">
+                        <span class="image-icon" aria-hidden="true">&#128444;</span>
+                    </div>
+                    <div class="recipe-info">
+                        <div class="recipe-header">
+                            <h3>Chicken Salad</h3>
+                            <div class="stars" aria-label="4 out of 5 stars">
+                                &#9733;&#9733;&#9733;&#9733;&#9734;
+                            </div>
+                        </div>
+                        <p>description: We love chicken<br>and salad</p>
+                    </div>
+                </li>
+
+                <!-- Recipe Card 5 -->
+                <li class="recipe-card">
+                    <div class="recipe-thumbnail-placeholder">
+                        <span class="image-icon" aria-hidden="true">&#128444;</span>
+                    </div>
+                    <div class="recipe-info">
+                        <div class="recipe-header">
+                            <h3>Chicken Salad</h3>
+                            <div class="stars" aria-label="4 out of 5 stars">
+                                &#9733;&#9733;&#9733;&#9733;&#9734;
+                            </div>
+                        </div>
+                        <p>description: We love chicken<br>and salad</p>
+                    </div>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Right Content: Recipe Detail -->
+        <section class="recipe-detail">
+            <button class="back-to-results">&lt; Back To Results</button>
+
+            <header class="detail-header">
+                <div class="title-reviews">
+                    <h2>Chicken Salad</h2>
+                    <div class="review-info">
+                        <span class="review-count">30 reviews</span>
+                        <span class="stars" aria-label="3.5 out of 5 stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                    </div>
+                </div>
+
+                <div class="tags-list">
+                    <span class="tag">Chicken</span>
+                    <span class="tag">Protein</span>
+                    <span class="tag">Easy</span>
+                    <span class="tag">Main Course</span>
+                </div>
+            </header>
+
+            <div class="main-image-placeholder">
+                <span class="large-image-icon" aria-hidden="true">&#128444;</span>
+            </div>
+
+            <nav class="recipe-tabs">
+                <button class="tab">Overview</button>
+                <button class="tab active">Ingredients</button>
+                <button class="tab">Reviews</button>
+            </nav>
+
+            <div class="tab-content">
+                <ul class="ingredients-list">
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Chicken (chopped or shredded)
+                        </label>
+                        <span class="amount">2 cups</span>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Chicken (chopped or shredded)
+                        </label>
+                        <span class="amount">2 cups</span>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Chicken (chopped or shredded)
+                        </label>
+                        <span class="amount">2 cups</span>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Chicken (chopped or shredded)
+                        </label>
+                        <span class="amount">2 cups</span>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Chicken (chopped or shredded)
+                        </label>
+                        <span class="amount">2 cups</span>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Chicken (chopped or shredded)
+                        </label>
+                        <span class="amount">2 cups</span>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Chicken (chopped or shredded)
+                        </label>
+                        <span class="amount">2 cups</span>
+                    </li>
+                </ul>
+
+                <button class="add-ingredients-btn">
+                    <span class="add-icon" aria-hidden="true">&oplus;</span> Do you want to add all the ingredients?
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <hr>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-logo">
+                <h2>Logo</h2>
+            </div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#">Link one</a></li>
+                    <li><a href="#">Link two</a></li>
+                    <li><a href="#">Link three</a></li>
+                    <li><a href="#">Link four</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram"><span aria-hidden="true">&#128247;</span></a>
+                <a href="#" aria-label="Facebook"><span aria-hidden="true">&#120125;</span></a>
+                <a href="#" aria-label="Twitter"><span aria-hidden="true">&#128038;</span></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Chef Kitchen. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
