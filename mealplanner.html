@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner - Chef-Kitchen</title>
+    <link rel="stylesheet" href="css/mealplanner.css">
+    <script type="module" src="/js/main.js"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Chef-Kitchen</h1>
+        <p>Find Meals. Plan Smart. Cook Easy</p>
+
+        <section id="nav">
+            <nav class="page-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mealplanner.html">Meal Planner</a></li>
+                    <li><a href="grocerylist.html">Grocery List</a></li>
+                    <li><a href="mealfinder.html">Meal Finder</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+
+    <main>
+        <!-- --------------------------------------------------------------------------------------------
+           Main Content Area -->
+        <section id="main">
+            <div class="meal-planner-container">
+                <div class="meal-planner-title">
+                    <h1>Weekly Meal Planner</h1>
+                    <p>
+                        Create a simple weekly meal plan and generate your grocery list automatically.
+                    </p>
+                </div>
+                <div class="meal-calender">
+                    <label for="week-selector">Select Week:</label>
+                    <input type="week" id="week-selector" name="week-selector">
+                </div>
+                <div class="meal-budget-container">
+                    <label for="meal-budget">Set Weekly Budget:</label>
+                    <input type="number" id="meal-budget" name="meal-budget" value="100">
+                </div>
+            </div>
+            <div class="meal-planner-actions">
+                <button id="clean-meal-plan-btn">Clean Meal Plan</button>
+                <button id="save-meal-plan-btn">Save Meal Plan</button>
+                <button id="generate-grocery-list-btn">Generate Grocery List</button>
+            </div>
+        </section>
+
+        <!-- --------------------------------------------------------------------------------------------
+           Meal Schedule Container -->
+        <section id="schedule-container">
+            <div class="schedule-grid">
+                <div class="week-day">
+                    <div class="day-title">Sunday</div>
+                    <div class="meal-container"></div>
+                </div>
+                <div class="week-day">
+                    <div class="day-title">Monday</div>
+                    <div class="meal-container"></div>
+                </div>
+                <div class="week-day">
+                    <div class="day-title">Tuesday</div>
+                    <div class="meal-container"></div>
+                </div>
+                <div class="week-day">
+                    <div class="day-title">Wednesday</div>
+                    <div class="meal-container"></div>
+                </div>
+                <div class="week-day">
+                    <div class="day-title">Thursday</div>
+                    <div class="meal-container"></div>
+                </div>
+                <div class="week-day">
+                    <div class="day-title">Friday</div>
+                    <div class="meal-container"></div>
+                </div>
+                <div class="week-day">
+                    <div class="day-title">Saturday</div>
+                    <div class="meal-container"></div>
+                </div>
+            </div>
+            <div class="recipe-suggestions-container">
+                <h2>🔍 Recipe Suggestions</h2>
+                <input type="search" id="recipe-search" placeholder="Search for a recipe">
+                <div class="recipe-suggestion-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <h2>Chef-Kitchen</h2>
+
+            <div class="footer-links">
+                <a href="#">X</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Pinterest</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Chef-Kitchen. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>

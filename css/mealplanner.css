@@ -1,0 +1,73 @@
+@import "./base.css";
+@import "./layout.css";
+
+/* Main Content Area --------------------------------------------------------------------------------------------*/
+
+#main {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   margin: 10px;
+}
+
+.meal-planner-actions {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: -40px;
+   margin-bottom: 1rem;
+   gap: 1rem;
+}
+
+
+/* Meal Schedule Container --------------------------------------------------------------------------------------------*/
+#schedule-container {
+   display: flex;
+   gap: 1.5rem;
+   padding: 0.5rem 0;
+}
+
+.schedule-grid {
+   flex: 3;
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+   gap: 1rem;
+   margin-left: 20px;
+}
+
+.recipe-suggestions-container {
+   flex: 1;
+   background-color: var(--surface);
+   padding: 1rem;
+   border-radius: 0.5rem;
+   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+   margin: -80px 20px 0 20px;
+}
+
+.week-day {
+   background-color: var(--surface);
+   padding: 1rem;
+   border-radius: 0.5rem;
+   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+
+
+}
+
+.day-title {
+   font-family: var(--primary-font);
+   font-size: 1.5rem;
+   font-weight: bold;
+   margin-bottom: 1rem;
+   text-align: center;
+}
+
+.meal {
+   padding: 0.5rem 0;
+}
+
+.meal-card {
+   padding: 0.5rem 0;
+}
+
+.add-btn {
+   padding: 25px 20px;
+}

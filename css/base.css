@@ -1,0 +1,35 @@
+:root {
+    /* Rustic Chef Kitchen Theme */
+    --primary: #556B2F;
+    /* Olive Green */
+    --secondary: #C65D3B;
+    /* Terracotta */
+    --accent: #D9A441;
+    /* Mustard Gold */
+
+    --background: #F8F5F0;
+    /* Cream */
+    --surface: #FFFDF8;
+    /* Warm White */
+
+    --text: #2E2E2E;
+    /* Charcoal */
+    --border: #D8D2C8;
+    --primary-font: "Arial", Helvetica;
+    --secondary-font: "Verdana", sans-serif;
+    --accent-font: "Copperplate", serif;
+    --h1-font-size: 3rem;
+    --h2-font-size: 2.25rem;
+    --h3-font-size: 1.75rem;
+    --h4-font-size: 1.5rem;
+    --h5-font-size: 1.25rem;
+    --h6-font-size: 1rem;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
