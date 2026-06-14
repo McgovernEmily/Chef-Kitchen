@@ -1,0 +1,31 @@
+/* buttons */
+.btn {
+    background-color: var(--secondary);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #aa4e33;
+}
+
+.btn-2nd {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+}
+
+.btn-2nd:hover {
+    background-color: #465b24;
+}
