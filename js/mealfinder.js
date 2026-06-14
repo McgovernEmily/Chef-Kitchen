@@ -52,6 +52,8 @@ async function handleSearch(query = "") {
 }
 
 // When the page loads, fetch some default recipes
+footerFunction();
+headerFunction();
 handleSearch();
 
 // Setup event listener for the search input
@@ -64,8 +66,6 @@ if (searchInput) {
     });
 }
 
-footerFunction();
-headerFunction();
 
 
 
