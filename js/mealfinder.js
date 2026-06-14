@@ -1,4 +1,5 @@
 import { getrecipeData } from "./recipedata.js";
+import { footerFunction, headerFunction } from "./home.js";
 
 // This function now ACCEPTS the array of recipes and just handles rendering them
 function renderRecipeCards(recipesList) {
@@ -62,6 +63,9 @@ if (searchInput) {
         }
     });
 }
+
+footerFunction();
+headerFunction();
 
 
 
