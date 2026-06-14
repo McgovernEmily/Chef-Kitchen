@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Finder - Chef Kitchen</title>
+    <link rel="stylesheet" href="css/mealfinder.css">
+    <script type="module" src="/js/mealfinder.js"></script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <div id="header-container"></div>
+
+    <!-- Main Content Area -->
+    <main class="meal-finder-container">
+        <!-- Left Sidebar: Meal Finder Results -->
+        <section class="sidebar-results">
+            <h2>Meal Finder</h2>
+
+            <div class="search-bar">
+                <span class="search-icon" aria-hidden="true">&#128269;</span>
+                <input type="text" placeholder="Search recipe..." aria-label="Search recipe">
+            </div>
+
+            <div class="filter-controls">
+                <select name="category" aria-label="Category">
+                    <option value="">Category</option>
+                </select>
+                <select name="meal-type" aria-label="Meal Type">
+                    <option value="">Meal Type</option>
+                </select>
+                <select name="diet" aria-label="Diet">
+                    <option value="">Diet</option>
+                </select>
+                <select name="sort-by" aria-label="Sort By">
+                    <option value="">Sort By</option>
+                </select>
+                <select name="max-price" aria-label="Max Price">
+                    <option value="">Max Price</option>
+                </select>
+            </div>
+
+            <div class="recipe-results">
+                <h2>Recipes</h2>
+                <div class="recipe-cards">
+                    <!-- Recipe cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+        <section class="meal-details-container">
+            <div class="meal-details-header">
+                <h1 class="meal-title"></h1>
+            </div>
+            <div class="meal-details-body">
+                <div class="meal-image"> I'm the image
+                    <img src="" alt="">
+                </div>
+                <div class="meal-section" id="overview">
+                    <button class="meal-section-title">Overview</button>
+                    <div class="meal-overview-info">
+                    </div>
+                </div>
+                <div class="meal-section" id="ingredients">
+                    <button class="meal-section-title">Ingredients</button>
+                    <div class="meal-ingredients-list"></div>
+                </div>
+                <div class="meal-section" id="reviews">
+                    <button class="meal-section-title">Reviews</button>
+                    <div class="meal-reviews-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <div id="footer-container"></div>
+</body>
+
+</html>

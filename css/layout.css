@@ -1,0 +1,149 @@
+/* header ---------------------------------------------------------------------------------*/
+header {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin-bottom: 5px;
+}
+
+/* nav */
+.page-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0;
+}
+
+.page-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.page-nav a:hover {
+    color: var(--accent);
+}
+
+/* main container stuff */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+}
+
+/* footer ---------------------------------------------------------------------------------*/
+footer {
+    background-color: var(--primary);
+    color: white;
+    margin-top: 40px;
+    padding: 25px;
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* buttons, inputs and selectors --------------------------------------------------------------------------------------------- */
+
+button {
+    padding: 10px;
+    border-radius: 5px;
+    border-color: var(--primary);
+    border: 1px solid var(--primary);
+    cursor: pointer;
+    background-color: var(--secondary);
+}
+
+button:hover {
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+input {
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+    color: var(--text);
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    cursor: text;
+    margin: 0.2rem;
+}
+
+input:hover {
+    border-color: var(--primary);
+}
+
+input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+select {
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+    color: var(--text);
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    cursor: text;
+    margin: 0.2rem;
+}
+
+select:hover {
+    border-color: var(--primary);
+}
+
+/* search bar --------------------------------------------------------------------------------------------- */
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+    color: var(--text);
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    cursor: text;
+    margin: 0.2rem;
+}
+
+.search-bar:hover {
+    border-color: var(--primary);
+}
+
+.search-bar:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
+}
