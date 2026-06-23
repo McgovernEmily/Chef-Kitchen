@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal Finder - Chef Kitchen</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="css/mealfinder.css">
+    <link rel="stylesheet" href="css/recipe-cards.css">
     <script type="module" src="/js/mealfinder.js"></script>
 </head>
 
 <body>
     <!-- Header Section -->
     <header>
-        <h1>Chef-Kitchen</h1>
+        <h1><img src="chef-kitchen-logo.png" alt="Chef-Kitchen Logo" class="main-logo"></h1>
         <p>Find Meals. Plan Smart. Cook Easy</p>
 
         <section id="nav">
@@ -66,26 +68,21 @@
         </section>
         <section class="meal-details-container">
             <div class="meal-details-header">
-                <h1 class="meal-title"></h1>
+            </div>
+            <div class="meal-image">
             </div>
             <div class="meal-details-body">
-                <div class="meal-image"> I'm the image
-                    <img src="" alt="">
-                </div>
                 <div class="meal-section" id="overview">
-                    <button class="meal-section-title">Overview</button>
-                    <div class="meal-overview-info">
-                    </div>
+                    <button class="overview-button">Overview</button>
                 </div>
                 <div class="meal-section" id="ingredients">
-                    <button class="meal-section-title">Ingredients</button>
-                    <div class="meal-ingredients-list"></div>
+                    <button class="ingredients-button">Ingredients</button>
                 </div>
                 <div class="meal-section" id="reviews">
-                    <button class="meal-section-title">Reviews</button>
-                    <div class="meal-reviews-list"></div>
+                    <button class="reviews-button">Details</button>
                 </div>
             </div>
+            <div class="meal-detail-section"></div>
         </section>
     </main>
 

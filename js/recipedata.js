@@ -1,38 +1,25 @@
-const baseURL = "https://api.spoonacular.com";
-const apiKey = import.meta.env.VITE_SPOONACULAR_API_KEY;
+const baseURL = "https://www.themealdb.com/api/json/v1/1";
 
 export async function getrecipeData(searchQuery = "") {
-    // 1. Construct the correct URL
-    const url = new URL(baseURL + "/recipes/complexSearch");
+    // 1. Construct the correct URL for TheMealDB
+    const url = new URL(baseURL + "/search.php");
 
-    // 2. Add our API key as a query parameter (standard for Spoonacular)
-    url.searchParams.append("apiKey", apiKey);
-
-
-    // 3. Add extra info so we get descriptions and scores
-    url.searchParams.append("addRecipeInformation", "true");
-    url.searchParams.append("number", 10);
-
-    // 4. Add the search term if the user typed one
-    if (searchQuery) {
-        url.searchParams.append("query", searchQuery);
-    }
+    // 2. Add the search term if the user typed one, otherwise it defaults to empty which returns some meals
+    url.searchParams.append("s", searchQuery);
 
     const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        method: "GET"
     };
 
-    // 5. Correctly pass (url, options) to fetch, NOT (url + options)
     const response = await fetch(url, options);
 
     if (response.ok) {
         const data = await response.json();
-        return data; // Spoonacular returns an object like { results: [...] }
+        return data; // TheMealDB returns an object like { meals: [...] } or { meals: null }
     } else {
         const errText = await response.text();
         throw new Error(`API Error ${response.status}: ${response.statusText}. Details: ${errText}`);
     }
 }
+
+

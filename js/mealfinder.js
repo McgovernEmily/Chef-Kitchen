@@ -1,71 +1,122 @@
-import { getrecipeData } from "./recipedata.js";
 
-// This function now ACCEPTS the array of recipes and just handles rendering them
-function renderRecipeCards(recipesList) {
-    const recipeCardsContainer = document.querySelector('.recipe-cards');
 
-    // Clear the container before adding new recipes
-    recipeCardsContainer.innerHTML = '';
+/* This code snippet handles the display of the recipe details */
+export let currentRecipe = null;
 
-    // If no recipes are found, show a message
-    if (!recipesList || recipesList.length === 0) {
-        recipeCardsContainer.innerHTML = '<p>No recipes found.</p>';
-        return;
-    }
+export function displayRecipeDetails(recipe) {
 
-    recipesList.forEach(recipe => {
-        const recipeCard = document.createElement('div');
-        recipeCard.classList.add('recipe-card');
-        recipeCard.innerHTML = `
-        <div class="recipe-container">
-            <div class="recipe-image">
-                <img src="${recipe.image}" alt="${recipe.title}">
-            </div>
-            <div class="recipe-content">
-                <h3 class="recipe-title">${recipe.title}</h3>
-                <p class="recipe-summary">${recipe.summary}</p>
-                <div class="recipe-footer">
-                    <button class="add-to-cart-button">View Recipe</button>
-                </div>
-            </div>
+    currentRecipe = recipe;
+
+    localStorage.setItem('lastViewedDish', JSON.stringify(recipe));
+
+    const mealImage = document.querySelector('.meal-image');
+    const mealTitle = document.querySelector('.meal-details-header');
+
+    mealImage.innerHTML = `
+    <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}">
+    `;
+
+    mealTitle.innerHTML = `
+    <h2>${recipe.strMeal}</h2>
+    `;
+
+    const overviewButton = document.querySelector('.overview-button');
+    if (overviewButton) overviewButton.click();
+}
+
+const overviewButton = document.querySelector('.overview-button');
+const ingredientsButton = document.querySelector('.ingredients-button');
+const reviewsButton = document.querySelector('.reviews-button');
+const mealDetailSection = document.querySelector('.meal-detail-section');
+
+if (overviewButton) {
+    overviewButton.addEventListener('click', () => {
+        if (!currentRecipe) return;
+        mealDetailSection.innerHTML = `
+        <div class="meal-overview-info">
+            <p>${currentRecipe.strInstructions ? currentRecipe.strInstructions.substring(0, 750) + '...' : 'No overview available.'}</p>
         </div>
         `;
-        recipeCardsContainer.appendChild(recipeCard);
     });
 }
 
-// This function handles getting the data and passing it to the render function
-async function handleSearch(query = "") {
+if (ingredientsButton) {
+    ingredientsButton.addEventListener('click', () => {
+        if (!currentRecipe) return;
+
+        // Build the list of ingredients dynamically
+        let ingredientsHTML = '';
+        for (let i = 1; i <= 20; i++) {
+            const ingredient = currentRecipe[`strIngredient${i}`];
+            const measure = currentRecipe[`strMeasure${i}`];
+
+            if (ingredient && ingredient.trim() !== "") {
+                const measureText = measure && measure.trim() !== "" ? `${measure} ` : "";
+                ingredientsHTML += `<li>${measureText}${ingredient}</li>`;
+            }
+        }
+
+        mealDetailSection.innerHTML = `
+        <div class="meal-ingredients-list">
+            <ul>
+                <li class="meal-ingredient-title">
+                    <h3>Ingredients</h3>
+                </li>
+                <li class="meal-ingredient-list">
+                    <ul>
+                        ${ingredientsHTML}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        `;
+    });
+}
+
+if (reviewsButton) {
+    reviewsButton.addEventListener('click', () => {
+        if (!currentRecipe) return;
+        mealDetailSection.innerHTML = `
+        <div class="meal-reviews-list">
+            <ul>
+                <li class="meal-review-title">
+                    <h3>Category</h3>
+                </li>
+                <li class="meal-review-content">
+                    <p>${currentRecipe.strCategory ? currentRecipe.strCategory : 'N/A'}</p>
+                </li>
+            </ul>
+            <ul>
+                <li class="meal-review-title">
+                    <h3>Area</h3>
+                </li>
+                <li class="meal-review-content">
+                    <p>${currentRecipe.strArea ? currentRecipe.strArea : 'N/A'}</p>
+                </li>
+            </ul>
+            <ul>
+                <li class="meal-ingredient-title">
+                    <h3>Instructions</h3>
+                </li>
+                <li class="meal-ingredient-content">
+                    <p>${currentRecipe.strInstructions ? currentRecipe.strInstructions : 'No instructions available.'}</p>
+                </li>
+            </ul>
+        </div>
+        `;
+    });
+}
+
+
+import('./templates.js').then(module => {
+    module.handleSearch('chicken');
+});
+const cachedDish = localStorage.getItem('lastViewedDish');
+if (cachedDish) {
     try {
-        // getrecipeData returns an object like: { results: [ ...recipes... ], offset: 0, etc }
-        const data = await getrecipeData(query);
-
-        // We only want the 'results' array from the Spoonacular response
-        const recipes = data.results;
-
-        // Pass that array to our render function
-        renderRecipeCards(recipes);
+        const recipe = JSON.parse(cachedDish);
+        displayRecipeDetails(recipe);
     } catch (error) {
-        console.error("Error fetching recipes:", error);
+        console.error('Error parsing cached dish:', error);
     }
 }
-
-// When the page loads, fetch some default recipes
-handleSearch();
-
-// Setup event listener for the search input
-const searchInput = document.querySelector('.search-bar input');
-if (searchInput) {
-    searchInput.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            handleSearch(searchInput.value);
-        }
-    });
-}
-
-
-
-
-
-
-
