@@ -7,42 +7,11 @@
     <title>Homepage</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="css/main.css">
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
 </head>
 
 <body>
-    <header>
-        <h1><img src="chef-kitchen-logo.png" alt="Chef-Kitchen Logo" class="main-logo"></h1>
-        <p>Find Meals. Plan Smart. Cook Easy</p>
-
-        <section id="nav">
-            <nav class="page-nav">
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-
-                    <li>
-                        <a href="mealplanner.html">Meal Planner</a>
-                    </li>
-
-                    <li>
-                        <a href="grocerylist.html">Grocery List</a>
-
-                    </li>
-
-                    <li>
-                        <a href="mealfinder.html">Meal Finder</a>
-                    </li>
-
-                    <li>
-                        <a href="contact.html">Contact Us</a>
-
-                    </li>
-                </ul>
-            </nav>
-        </section>
-    </header>
+    <div id="header-container"></div>
 
     <div class="container">
         <section class="hero">
@@ -50,18 +19,20 @@
                 <h1>Plan Tasty Meals, Save Money. Eat Better!</h1>
 
                 <p>
-                    find tasty recipes and plan your week's meals. Create
+                    Find tasty recipes and plan your week's meals. Create
                     a grocery list that fits your budget and dietary needs.
                     Make budget-friendly meals that are delicious and nutritious.
                 </p>
 
                 <div class="hero-image">
-                    Hero Image
+                    <video autoplay muted loop>
+                        <source src="images/cooking.mp4" type="video/mp4">
+                    </video>
                 </div>
 
                 <div class="hero-buttons">
-                    <a href="#" class="btn">Find Meals</a>
-                    <a href="#" class="btn-2nd">Create Grocery List</a>
+                    <a href="mealfinder.html" class="btn">Find Meals</a>
+                    <a href="grocerylist.html" class="btn-2nd">Create Grocery List</a>
                 </div>
             </div>
         </section>
@@ -71,27 +42,37 @@
 
             <div class="category-grid">
                 <div class="category-card">
-                    <div class="category-image"></div>
+                    <div class="category-image"> 
+                        <img src="images/main-course.jpg" alt="main-course">
+                    </div>
                     <p>Main Course</p>
                 </div>
 
                 <div class="category-card">
-                    <div class="category-image"></div>
+                    <div class="category-image">
+                        <img src="images/soup.jpg" alt="soup">
+                    </div>
                     <p>Soups</p>
                 </div>
 
                 <div class="category-card">
-                    <div class="category-image"></div>
+                    <div class="category-image">
+                        <img src="images/dessert.jpg" alt="dessert">
+                    </div>
                     <p>Desserts</p>
                 </div>
 
                 <div class="category-card">
-                    <div class="category-image"></div>
+                    <div class="category-image">
+                        <img src="images/chicken-rice.jpg" alt="chicken-rice">
+                    </div>
                     <p>Quick & Easy</p>
                 </div>
 
                 <div class="category-card">
-                    <div class="category-image"></div>
+                    <div class="category-image">
+                        <img src="images/italian.jpg" alt="italian">
+                    </div>
                     <p>Italian</p>
                 </div>
             </div>
@@ -116,22 +97,7 @@
 
     </div>
 
-    <footer>
-        <div class="footer-top">
-            <h2>Chef-Kitchen</h2>
-
-            <div class="footer-links">
-                <a href="#">X</a>
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Pinterest</a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            © 2026 Chef-Kitchen. All Rights Reserved.
-        </div>
-    </footer>
+    <div id="footer-container"></div>
 </body>
 
 </html>

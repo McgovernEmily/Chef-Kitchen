@@ -1,3 +1,5 @@
+import { getrecipeData } from "./recipedata.js";
+import { footerFunction, headerFunction } from "./home.js";
 
 
 /* This code snippet handles the display of the recipe details */
@@ -120,3 +122,5 @@ if (cachedDish) {
         console.error('Error parsing cached dish:', error);
     }
 }
+footerFunction();
+headerFunction();
