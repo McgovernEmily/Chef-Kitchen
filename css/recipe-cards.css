@@ -1,0 +1,106 @@
+/* Recipe Cards Container */
+.recipe-cards,
+.recipe-suggestion-cards {
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+    padding-right: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Custom Scrollbar for Recipe Cards */
+.recipe-cards::-webkit-scrollbar,
+.recipe-suggestion-cards::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recipe-cards::-webkit-scrollbar-track,
+.recipe-suggestion-cards::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.recipe-cards::-webkit-scrollbar-thumb,
+.recipe-suggestion-cards::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+/* Individual Recipe Card */
+.recipe-container {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    background-color: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    text-align: left;
+}
+
+.recipe-container:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.recipe-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.recipe-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.recipe-container:hover .recipe-image img {
+    transform: scale(1.05);
+}
+
+.recipe-content {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 16px;
+}
+
+.recipe-title {
+    font-size: 1.15rem;
+    margin: 0 0 8px 0;
+    color: var(--primary);
+}
+
+.recipe-summary {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin: 0 0 12px 0;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.add-to-cart-button,
+.suggestion-button {
+    align-self: flex-start;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px;
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+    transition: background-color 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+
+.add-to-cart-button:hover,
+.suggestion-button:hover {
+    background-color: #ba512b;
+    /* Slightly darker terracotta */
+}

@@ -1,35 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap');
+
 :root {
-    /* Rustic Chef Kitchen Theme */
-    --primary: #556B2F;
-    /* Olive Green */
-    --secondary: #C65D3B;
-    /* Terracotta */
-    --accent: #D9A441;
-    /* Mustard Gold */
+    /* Premium Rustic Chef Kitchen Theme */
+    --primary: #4A5D23; /* Deeper Olive Green */
+    --secondary: #D36135; /* Vibrant Terracotta */
+    --accent: #E6AF2E; /* Mustard Gold */
 
-    --background: #F8F5F0;
-    /* Cream */
-    --surface: #FFFDF8;
-    /* Warm White */
+    --background: #F9F7F1; /* Soft Cream */
+    --surface: #FFFFFF; /* Crisp White */
+    
+    --text: #2A2A2A; /* Rich Charcoal */
+    --text-light: #6B6B6B;
+    --border: #E5E0D8;
+    
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+    --shadow-lg: 0 12px 32px rgba(42, 42, 42, 0.12);
 
-    --text: #2E2E2E;
-    /* Charcoal */
-    --border: #D8D2C8;
-    --primary-font: "Arial", Helvetica;
-    --secondary-font: "Verdana", sans-serif;
-    --accent-font: "Copperplate", serif;
-    --h1-font-size: 3rem;
-    --h2-font-size: 2.25rem;
-    --h3-font-size: 1.75rem;
-    --h4-font-size: 1.5rem;
-    --h5-font-size: 1.25rem;
-    --h6-font-size: 1rem;
+    --primary-font: 'Inter', sans-serif;
+    --heading-font: 'Outfit', sans-serif;
 }
 
 body {
     background-color: var(--background);
+    background-image: radial-gradient(circle at top right, rgba(211,97,53,0.05), transparent 400px), 
+                      radial-gradient(circle at bottom left, rgba(74,93,35,0.05), transparent 400px);
+    background-attachment: fixed;
     color: var(--text);
-    font-family: Arial, sans-serif;
+    font-family: var(--primary-font);
     margin: 0;
     padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 0;
 }
