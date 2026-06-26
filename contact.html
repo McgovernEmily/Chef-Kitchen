@@ -6,7 +6,9 @@
     <title>Contact Us</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/contact.css">
     <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/contact.js"></script>
 </head>
 <body>
     <div id="header-container"></div>
@@ -16,31 +18,41 @@
         <p>Have questions or feedback? We'd love to hear from you!</p>
 
         <form class="contact-form">
+            <div class="form-group">
+                <input id="name" type="text" placeholder="Your Name" required>
+            </div>
 
-            <input type="text" placeholder="Your Name" required>
+            <div class="form-group">
+                <input type="tel" id="phone_number" placeholder="Phone Number">
+            </div>
 
-            <input type="email" placeholder="Your Email" required>
+            <div class="form-group">
+                <input id="email" type="email" placeholder="Your Email" required>
+            </div>
 
-            <textarea placeholder="Your Message" required></textarea>
-
-            <button type="submit" class="btn">Send Message</button>
+            <div class="form-group">
+                <textarea id="message" placeholder="How can we help..." required></textarea>
+                <button type="submit" id="submitbutton">Send Message</button>
+            </div>
         </form>
     </div>
 
-    <footer>
-    <div class="footer-top">
-        <h2>Chef-Kitchen</h2>
+    <div id="messageModal" class="modal">
 
-        <div class="footer-links">
-            <a href="#">X</a>
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Pinterest</a>
+        <div class="modal-content">
+
+            <h2 id="modalTitle"></h2>
+
+            <p id="modalMessage"></p>
+
+            <button id="closeModal" class="btn">
+                Close
+            </button>
+
         </div>
+
     </div>
 
-    <div class="footer-bottom">
-        © 2026 Chef-Kitchen. All Rights Reserved.
-    </div>
+    <div id="footer-container"></div>
 </body>
 </html>

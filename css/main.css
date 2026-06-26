@@ -107,20 +107,3 @@
 .summary-box h2 {
     color: var(--primary);
 }
-
-/* contact form */
-form input,
-form textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background-color: white;
-}
-
-form input:focus,
-form textarea:focus {
-    outline: none;
-    border-color: var(--secondary);
-}
