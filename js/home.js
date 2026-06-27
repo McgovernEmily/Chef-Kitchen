@@ -2,6 +2,7 @@ export function headerFunction() {
     document.getElementById("header-container").innerHTML = `
     <header>
         <h1><img src="chef-kitchen-logo.png" alt="Chef-Kitchen Logo" class="main-logo"></h1>
+        <button class="hamburger" id="hamburger"> ☰ </button>
         <p>Find Meals. Plan Smart. Cook Easy</p>
 
         <section id="nav">
