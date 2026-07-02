@@ -21,7 +21,6 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         contact: resolve(__dirname, 'contact.html'),
-        finder: resolve(__dirname, 'finder.html'),
         grocerylist: resolve(__dirname, 'grocerylist.html'),
         mealfinder: resolve(__dirname, 'mealfinder.html'),
         mealplanner: resolve(__dirname, 'mealplanner.html'),

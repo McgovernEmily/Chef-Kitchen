@@ -1,32 +1,67 @@
 /* header ---------------------------------------------------------------------------------*/
 header {
-    background-color: var(--primary);
-    color: white;
-    text-align: center;
-    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(74, 93, 35, .95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(64, 64, 64, 0.15);
+    transition: .35s;
 }
 
 header h1 {
     margin-bottom: 5px;
 }
 
+.main-logo {
+    height: 90px;
+    transition: .4s;
+}
+
 /* nav */
 .page-nav ul {
-    list-style: none;
     display: flex;
     justify-content: center;
     gap: 40px;
+    list-style: none;
     padding: 0;
 }
 
 .page-nav a {
+    position: relative;
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 1.05rem;
+    transition: .3s;
+
+}
+
+.page-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: .3s;
+
 }
 
 .page-nav a:hover {
     color: var(--accent);
+}
+
+.page-nav a:hover::after {
+    width: 100%;
+}
+
+.page-nav li {
+    transition: .3s;
+}
+
+.page-nav li:hover {
+    transform: translateY(-4px);
 }
 
 /* main container stuff */

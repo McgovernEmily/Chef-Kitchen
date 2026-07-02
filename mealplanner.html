@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal Planner - Chef-Kitchen</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="css/mealplanner.css">
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/mealplanner.js"></script>
+    <link rel="stylesheet" href="css/recipe-cards.css">
+    <link rel="stylesheet" href="css/dialog.css">
 </head>
 
 <body>
@@ -77,7 +81,9 @@
             <div class="recipe-suggestions-container">
                 <h2>🔍 Recipe Suggestions</h2>
                 <input type="search" id="recipe-search" placeholder="Search for a recipe">
-                <div class="recipe-suggestion-list"></div>
+                <div class="recipe-suggestion-cards">
+                    <!-- Recipe cards will be dynamically inserted here -->
+                </div>
             </div>
         </section>
     </main>

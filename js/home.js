@@ -1,7 +1,8 @@
 export function headerFunction() {
     document.getElementById("header-container").innerHTML = `
     <header>
-        <h1>Chef-Kitchen</h1>
+        <h1><img src="chef-kitchen-logo.png" alt="Chef-Kitchen Logo" class="main-logo"></h1>
+        <button class="hamburger" id="hamburger"> ☰ </button>
         <p>Find Meals. Plan Smart. Cook Easy</p>
 
         <section id="nav">
@@ -40,7 +41,7 @@ export function footerFunction() {
     document.getElementById("footer-container").innerHTML = `
     <footer>
         <div class="footer-top">
-            <h2>Chef-Kitchen</h2>
+            <h1><img src="chef-kitchen-logo.png" alt="Chef-Kitchen Logo" class="main-logo"></h1>
 
             <div class="footer-links">
                 <a href="#">X</a>
