@@ -36,20 +36,3 @@
     transform: translateY(-5px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, .2);
 }
-
-/* ham*/
-.hamburger {
-
-    display: none;
-
-    background: none;
-
-    border: none;
-
-    color: white;
-
-    font-size: 2rem;
-
-    cursor: pointer;
-
-}
