@@ -9,10 +9,14 @@
     transition: 0.3s;
     cursor: pointer;
     display: inline-block;
+    transition: .35s;
+    margin-top: 10px;
 }
 
 .btn:hover {
     background-color: #aa4e33;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, .2);
 }
 
 .btn-2nd {
@@ -24,8 +28,11 @@
     cursor: pointer;
     display: inline-block;
     border: none;
+    transition: .35s;
 }
 
 .btn-2nd:hover {
     background-color: #465b24;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, .2);
 }

@@ -4,33 +4,36 @@ export function headerFunction() {
         <h1><img src="chef-kitchen-logo.png" alt="Chef-Kitchen Logo" class="main-logo"></h1>
         <p>Find Meals. Plan Smart. Cook Easy</p>
 
-        <section id="nav">
-            <nav class="page-nav">
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
+        <div class="menu-container">
+            <button class="hamburger" id="hamburger">☰</button>
+            <section id="nav">
+                <nav class="page-nav" id="page-nav">
+                    <ul>
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
 
-                    <li>
-                        <a href="mealplanner.html">Meal Planner</a>
-                    </li>
+                        <li>
+                            <a href="mealplanner.html">Meal Planner</a>
+                        </li>
 
-                    <li>
-                        <a href="grocerylist.html">Grocery List</a>
+                        <li>
+                            <a href="grocerylist.html">Grocery List</a>
 
-                    </li>
+                        </li>
 
-                    <li>
-                        <a href="mealfinder.html">Meal Finder</a>
-                    </li>
+                        <li>
+                            <a href="mealfinder.html">Meal Finder</a>
+                        </li>
 
-                    <li>
-                        <a href="contact.html">Contact Us</a>
+                        <li>
+                            <a href="contact.html">Contact Us</a>
 
-                    </li>
-                </ul>
-            </nav>
-        </section>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
     </header>
     `;
 }
@@ -40,7 +43,7 @@ export function footerFunction() {
     document.getElementById("footer-container").innerHTML = `
     <footer>
         <div class="footer-top">
-            <h2>Chef-Kitchen</h2>
+            <h1><img src="chef-kitchen-logo.png" alt="Chef-Kitchen Logo" class="main-logo"></h1>
 
             <div class="footer-links">
                 <a href="#">X</a>

@@ -6,7 +6,9 @@
     <title>Grocery List</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/grocerylist.css">
     <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/grocerylist.js"></script>
 </head>
 <body>
     <div id="header-container"></div>
@@ -15,131 +17,19 @@
         <h1>My Grocery List</h1>
 
         <div class="grocery-table">
-            <table class="food-types">
-                <tr>
-                    <h2>Dairy</h2>
-                    <th></th>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Meal</th>
-                    <th>Action</th>
-                </tr>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Ingredient</th>
+                        <th>Quantity</th>
+                        <th>Meal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
 
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Milk</td>
-                    <td>2 Cups</td>
-                    <td>Spaghetti Bolognese</td>
-                    <td><input type="checkbox">trash</td>
-                </tr>
-            </table>
-
-            <table class="food-types">
-                <tr>
-                    <h2>Fruits</h2>
-                    <th></th>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Meal</th>
-                    <th>Action</th>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Chicken</td>
-                    <td>2 Cups</td>
-                    <td>Chicken Salad</td>
-                    <td><input type="checkbox">trash</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Lettuce</td>
-                    <td>1 Head</td>
-                    <td>Chicken Salad</td>
-                    <td><input type="checkbox">trash</td>
-                </tr>
-            </table>
-
-            <table class="food-types">
-                <tr>
-                    <h2>Vegetables</h2>
-                    <th></th>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Meal</th>
-                    <th>Action</th>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Chicken</td>
-                    <td>2 Cups</td>
-                    <td>Chicken Salad</td>
-                    <td><input type="checkbox">trash</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Lettuce</td>
-                    <td>1 Head</td>
-                    <td>Chicken Salad</td>
-                    <td><input type="checkbox">trash</td>
-                </tr>
-            </table>
-
-            <table class="food-types">
-                <tr>
-                    <h2>Grains</h2>
-                    <th></th>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Meal</th>
-                    <th>Action</th>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Chicken</td>
-                    <td>2 Cups</td>
-                    <td>Chicken Salad</td>
-                    <td><input type="checkbox">trash</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Lettuce</td>
-                    <td>1 Head</td>
-                    <td>Chicken Salad</td>
-                    <td><input type="checkbox">trash</td>
-                </tr>
-            </table>
-
-            <table class="food-types">
-                <tr>
-                    <h2>Protein</h2>
-                    <th></th>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Meal</th>
-                    <th>Action</th>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Chicken</td>
-                    <td>2 Cups</td>
-                    <td>Chicken Salad</td>
-                    <td><input type="checkbox">trash</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Lettuce</td>
-                    <td>1 Head</td>
-                    <td>Chicken Salad</td>
-                    <td><input type="checkbox">trash</td>
-                </tr>
+                <tbody id="grocery-body">
+                </tbody>
             </table>
         </div>
 

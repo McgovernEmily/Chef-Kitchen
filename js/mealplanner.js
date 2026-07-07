@@ -178,6 +178,19 @@ function populateGridCell(day, mealMoment, recipe) {
             const changeBtn = targetMealCard.querySelector('.change-meal-btn');
             if (changeBtn) {
                 changeBtn.addEventListener('click', resetMeal);
+        // Save the selected recipe
+        const mealPlan = JSON.parse(localStorage.getItem("mealPlan")) || {};
+
+        mealPlan[`${day}-${mealMoment}`] = currentRecipeToAdd;
+
+        localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
+
+        // Find the day container
+        const weekDays = document.querySelectorAll('.week-day');
+        let targetDayElement = null;
+        weekDays.forEach(wd => {
+            if (wd.querySelector('.day-title').textContent.trim() === day) {
+                targetDayElement = wd;
             }
         }
     }
@@ -277,3 +290,47 @@ export function initMealPlanner() {
 }
 
 initMealPlanner();  
+function generateGroceryList() {
+
+    const mealPlan =
+        JSON.parse(localStorage.getItem("mealPlan")) || {};
+
+    const groceryItems = [];
+
+    Object.values(mealPlan).forEach(recipe => {
+
+        for(let i = 1; i <= 20; i++){
+
+            const ingredient = recipe[`strIngredient${i}`];
+            const measure = recipe[`strMeasure${i}`];
+
+            if(
+                ingredient &&
+                ingredient.trim() !== ""
+            ){
+                groceryItems.push({
+                    ingredient,
+                    measure,
+                    meal: recipe.strMeal
+                });
+            }
+
+        }
+
+    });
+
+    localStorage.setItem(
+        "groceryList",
+        JSON.stringify(groceryItems)
+    );
+
+    window.location.href = "grocerylist.html";
+}
+
+mealPlanner();
+handleSearch('chicken');
+setupSuggestionDialog();
+
+document
+    .getElementById("generate-grocery-list-btn")
+    .addEventListener("click", generateGroceryList);
