@@ -65,13 +65,15 @@ export function renderRecipeCards(recipesList) {
 
 
 // Setup event listener for the search input
-const searchInput = document.querySelector('.search-bar input');
-if (searchInput) {
-    searchInput.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            handleSearch(searchInput.value);
-        }
-    });
+export function setupSearchBar() {
+    const searchInput = document.querySelector('.search-bar input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                handleSearch(searchInput.value);
+            }
+        });
+    }
 }
 
 

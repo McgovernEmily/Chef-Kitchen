@@ -328,3 +328,85 @@
    color: white;
    transform: translateY(-1px);
 }
+
+/* Grid Search Dialog Styles */
+.grid-search-header {
+   display: flex;
+   gap: 10px;
+   margin-bottom: 15px;
+}
+
+.grid-search-input {
+   flex: 1;
+   padding: 8px;
+}
+
+.grid-search-btn-style {
+   padding: 8px 16px;
+}
+
+#grid-search-results {
+   max-height: 300px;
+   overflow-y: auto;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.grid-search-actions {
+   margin-top: 20px;
+}
+
+.grid-search-item {
+   display: flex;
+   align-items: center;
+   gap: 15px;
+   padding: 10px;
+   border: 1px solid #eee;
+   border-radius: 8px;
+}
+
+.grid-search-item img {
+   width: 50px;
+   height: 50px;
+   border-radius: 4px;
+   object-fit: cover;
+}
+
+.grid-search-item span {
+   font-weight: bold;
+   flex: 1;
+}
+
+.grid-search-item .add-btn {
+   padding: 6px 12px;
+   font-size: 0.9em;
+}
+
+@media print {
+
+   /* 1. Hide everything in the body by default */
+   body * {
+      visibility: hidden;
+   }
+
+   /* 2. Make only the specific form and its children visible */
+   #schedule-container,
+   #schedule-container * {
+      visibility: visible;
+   }
+
+   /* 3. Position the form at the top left of the printed page */
+   #schedule-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+   }
+
+   /* Optional: Remove background colors or shadows for a cleaner PDF */
+   #schedule-container {
+      box-shadow: none;
+      background: white;
+   }
+}
