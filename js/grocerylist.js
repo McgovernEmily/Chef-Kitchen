@@ -40,11 +40,16 @@ function loadGroceryList() {
 
 const clearBtn = document.getElementById("btn-clear");
 
+if (clearBtn) {
     clearBtn.addEventListener("click", () => {
+
         localStorage.removeItem("groceryList");
-        tbody.innerHTML = "";
+        localStorage.removeItem("mealPlan");
+
         loadGroceryList();
-});
+
+    });
+}
 
 
 function deleteIngredient(index) {
