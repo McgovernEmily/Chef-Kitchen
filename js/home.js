@@ -1,3 +1,5 @@
+import { getRecipeById } from "./recipedata";
+
 export function headerFunction() {
     document.getElementById("header-container").innerHTML = `
     <header>
@@ -60,3 +62,23 @@ export function footerFunction() {
     `
 
 }
+
+async function loadImages() {
+    const recipeIds = [
+        {id:"52779", imageId: "vegetarian-image"}, 
+        {id:"52956", imageId: "soup-image"}, 
+        {id:"52893", imageId: "dessert-image"}, 
+        {id:"52772", imageId: "quick-easy-image"}, 
+        {id:"52770", imageId: "italian-image"}
+    ];
+
+    for (const recipe of recipeIds) {
+        const data = await getRecipeById(recipe.id);
+        if (data.meals){
+            document.getElementById(recipe.imageId).src = data.meals[0].strMealThumb;
+        }
+    }
+
+}
+
+loadImages();

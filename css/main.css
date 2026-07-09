@@ -79,6 +79,11 @@
     text-align: center;
     padding: 10px;
     font-weight: bold;
+    color: var(--text);
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
 }
 
 /* features */

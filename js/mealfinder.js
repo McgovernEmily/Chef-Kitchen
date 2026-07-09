@@ -1,11 +1,11 @@
-import { getrecipeData } from "./recipedata.js";
+import { getrecipeData, getRecipeById } from "./recipedata.js";
 import { footerFunction, headerFunction } from "./home.js";
 
 
 /* This code snippet handles the display of the recipe details */
 export let currentRecipe = null;
 
-export function displayRecipeDetails(recipe) {
+export async function displayRecipeDetails(recipe) {
 
     currentRecipe = recipe;
 
@@ -26,11 +26,37 @@ export function displayRecipeDetails(recipe) {
     if (overviewButton) overviewButton.click();
 }
 
-export function initMealFinder() {
+export async function initMealFinder() {
     const overviewButton = document.querySelector('.overview-button');
     const ingredientsButton = document.querySelector('.ingredients-button');
     const reviewsButton = document.querySelector('.reviews-button');
     const mealDetailSection = document.querySelector('.meal-detail-section');
+
+    // This is where it finds the URL parameter for the meal ID
+    const params = new URLSearchParams(window.location.search);
+    const recipeId = params.get("id");
+
+    if (recipeId) {
+        try {
+            const data = await getRecipeById(recipeId);
+
+            if (data.meals) {
+                displayRecipeDetails(data.meals[0]);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    } else {
+        const cachedDish = localStorage.getItem("lastViewedDish");
+
+        if (cachedDish) {
+            try {
+                displayRecipeDetails(JSON.parse(cachedDish));
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
 
     if (overviewButton) {
         overviewButton.addEventListener('click', () => {

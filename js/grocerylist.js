@@ -1,4 +1,6 @@
 const tbody = document.getElementById("grocery-body");
+const totalSummary = document.getElementById("total-summary");
+
 
 function loadGroceryList() {
 
@@ -6,6 +8,11 @@ function loadGroceryList() {
 
     const groceryList =
         JSON.parse(localStorage.getItem("groceryList")) || []
+
+    let totalMeals = groceryList.map(item => item.meal).filter((value, index, self) => 
+        self.indexOf(value) === index).length;
+    let totalIngredients = 0
+
 
     groceryList.forEach((item, index) => {
 
@@ -23,6 +30,8 @@ function loadGroceryList() {
         </tr>
         `;
 
+        totalIngredients += 1;
+
     });
 
     document.querySelectorAll(".delete-btn")
@@ -35,6 +44,17 @@ function loadGroceryList() {
             });
 
         });
+
+    totalSummary.innerHTML = `
+        <h2>Grocery List Summary</h2>
+        <p>Total Meals: ${totalMeals}</p>
+        <p>Total Ingredients: ${totalIngredients}</p>
+        <h3>Meals</h3>
+        <ul>
+            ${[...new Set(groceryList.map(item => item.meal))]
+                .map(meal => `<li>${meal}</li>`).join("")}
+        </ul>
+    `;
 
 }
 
@@ -65,6 +85,10 @@ function deleteIngredient(index) {
     );
 
     loadGroceryList();
+}
+
+function countingItems(){
+
 }
 
 loadGroceryList();

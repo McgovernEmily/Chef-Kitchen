@@ -242,7 +242,7 @@ select:hover {
         display: none;
         position: absolute;
         top: 50px;
-        right: 0;
+        right: 0px;
         width: 220px;
         background: rgba(74, 93, 35, .98);
         border-radius: 12px;

@@ -22,4 +22,17 @@ export async function getrecipeData(searchQuery = "") {
     }
 }
 
+export async function getRecipeById(id) {
+    const url = new URL(baseURL + "/lookup.php");
+    url.searchParams.append("i", id);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch recipe.");
+    }
+
+    return await response.json();
+}
+
 
