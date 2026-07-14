@@ -1,11 +1,12 @@
 import { getrecipeData, getRecipeById } from "./recipedata.js";
 import { footerFunction, headerFunction } from "./home.js";
+import longDescriptions from "./long_descriptions.json";
 
 
 /* This code snippet handles the display of the recipe details */
 export let currentRecipe = null;
 
-export async function displayRecipeDetails(recipe) {
+export function displayRecipeDetails(recipe) {
 
     currentRecipe = recipe;
 
@@ -13,6 +14,11 @@ export async function displayRecipeDetails(recipe) {
 
     const mealImage = document.querySelector('.meal-image');
     const mealTitle = document.querySelector('.meal-details-header');
+
+    // Remove the animation, force a reflow, and add it back to re-trigger it
+    mealImage.style.animation = 'none';
+    mealImage.offsetHeight; /* trigger reflow */
+    mealImage.style.animation = null;
 
     mealImage.innerHTML = `
     <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}">
@@ -26,44 +32,20 @@ export async function displayRecipeDetails(recipe) {
     if (overviewButton) overviewButton.click();
 }
 
-export async function initMealFinder() {
+export function initMealFinder() {
     const overviewButton = document.querySelector('.overview-button');
     const ingredientsButton = document.querySelector('.ingredients-button');
     const reviewsButton = document.querySelector('.reviews-button');
     const mealDetailSection = document.querySelector('.meal-detail-section');
 
-    // This is where it finds the URL parameter for the meal ID
-    const params = new URLSearchParams(window.location.search);
-    const recipeId = params.get("id");
-
-    if (recipeId) {
-        try {
-            const data = await getRecipeById(recipeId);
-
-            if (data.meals) {
-                displayRecipeDetails(data.meals[0]);
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    } else {
-        const cachedDish = localStorage.getItem("lastViewedDish");
-
-        if (cachedDish) {
-            try {
-                displayRecipeDetails(JSON.parse(cachedDish));
-            } catch (error) {
-                console.error(error);
-            }
-        }
-    }
-
     if (overviewButton) {
         overviewButton.addEventListener('click', () => {
             if (!currentRecipe) return;
+            const fallback = currentRecipe.strInstructions ? currentRecipe.strInstructions.substring(0, 750) + '...' : 'No overview available.';
+            const longDesc = longDescriptions[currentRecipe.strMeal] ? longDescriptions[currentRecipe.strMeal] : fallback;
             mealDetailSection.innerHTML = `
             <div class="meal-overview-info">
-                <p>${currentRecipe.strInstructions ? currentRecipe.strInstructions.substring(0, 750) + '...' : 'No overview available.'}</p>
+                <p>${longDesc}</p>
             </div>
             `;
         });
@@ -137,20 +119,40 @@ export async function initMealFinder() {
     }
 
 
-    import('./templates.js').then(module => {
+    import('./templates.js').then(async module => {
         module.setupSearchBar(); // Initialize the search bar listener since it's on this page
-        module.handleSearch('chicken');
-    });
 
-    const cachedDish = localStorage.getItem('lastViewedDish');
-    if (cachedDish) {
-        try {
-            const recipe = JSON.parse(cachedDish);
-            displayRecipeDetails(recipe);
-        } catch (error) {
-            console.error('Error parsing cached dish:', error);
+        const urlParams = new URLSearchParams(window.location.search);
+        const mealId = urlParams.get('id');
+
+        if (mealId) {
+            try {
+                const data = await getRecipeById(mealId);
+                if (data.meals && data.meals.length > 0) {
+                    const recipe = data.meals[0];
+                    displayRecipeDetails(recipe);
+                    module.handleSearch(recipe.strCategory || 'chicken');
+                } else {
+                    module.handleSearch('chicken');
+                }
+            } catch (error) {
+                console.error("Error fetching recipe by ID:", error);
+                module.handleSearch('chicken');
+            }
+        } else {
+            module.handleSearch('chicken');
+
+            const cachedDish = localStorage.getItem('lastViewedDish');
+            if (cachedDish) {
+                try {
+                    const recipe = JSON.parse(cachedDish);
+                    displayRecipeDetails(recipe);
+                } catch (error) {
+                    console.error('Error parsing cached dish:', error);
+                }
+            }
         }
-    }
+    });
 
     footerFunction();
     headerFunction();

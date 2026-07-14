@@ -1,5 +1,6 @@
 import { getrecipeData } from "./recipedata.js";
 import { displayRecipeDetails } from "./mealfinder.js";
+import descriptions from "./descriptions.json";
 
 // This function handles getting the data and passing it to the render function
 export async function handleSearch(query = "") {
@@ -37,7 +38,8 @@ export function renderRecipeCards(recipesList) {
 
         const title = recipe.strMeal;
         const imageUrl = recipe.strMealThumb;
-        const summary = recipe.strInstructions ? recipe.strInstructions.substring(0, 150) + '...' : 'No summary available.';
+        const defaultSummary = recipe.strInstructions ? recipe.strInstructions.substring(0, 150) + '...' : 'No summary available.';
+        const summary = descriptions[title] ? descriptions[title] : defaultSummary;
 
         recipeCard.innerHTML = `
         <div class="recipe-container">
@@ -95,7 +97,8 @@ export function renderSuggestions(recipesList) {
 
         const title = recipe.strMeal;
         const imageUrl = recipe.strMealThumb;
-        const summary = recipe.strInstructions ? recipe.strInstructions.substring(0, 150) + '...' : 'No summary available.';
+        const defaultSummary = recipe.strInstructions ? recipe.strInstructions.substring(0, 150) + '...' : 'No summary available.';
+        const summary = descriptions[title] ? descriptions[title] : defaultSummary;
 
         suggestionCard.innerHTML = `
         <div class="recipe-container">
@@ -123,3 +126,4 @@ export function renderSuggestions(recipesList) {
         suggestionCardsContainer.appendChild(suggestionCard);
     });
 }
+

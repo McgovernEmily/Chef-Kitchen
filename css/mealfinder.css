@@ -174,14 +174,51 @@
     color: var(--primary);
 }
 
-@keyframes fadeIn {
-    from {
+.meal-image {
+    border-radius: 10px;
+    height: fit-content;
+    animation-name: RecipeSlide;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes RecipeSlide {
+    0% {
+        transform: translateX(-100px);
         opacity: 0;
-        transform: translateY(10px);
     }
 
-    to {
+    100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .meal-finder-container {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    .sidebar-results {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .meal-details-container {
+        padding: 16px;
+    }
+    
+    .filter-controls select {
+        flex: 1 1 100%;
+    }
+    
+    .meal-details-body {
+        flex-direction: column;
+    }
+    
+    .meal-section {
+        max-width: 100%;
     }
 }

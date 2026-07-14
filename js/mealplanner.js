@@ -4,14 +4,14 @@ import { getrecipeData } from "./recipedata.js";
 export const plannerState = {
     activeGridDay: null,
     activeGridMeal: null,
-    currentRecipeToAdd: null
+    currentRecipeToAdd: null,
 };
 
 export function mealPlanner() {
     // Select ALL elements with the class 'meal' (all 7 days)
     const meals = document.querySelectorAll(".meal-container");
 
-    meals.forEach(meal => {
+    meals.forEach((meal) => {
         meal.innerHTML = `
             <div class="meal">
                 <div class="meal-card" id="breakfast">Breakfast
@@ -33,23 +33,25 @@ export function mealPlanner() {
             </div>`;
 
         // Attach event listeners to the buttons for THIS specific day
-        const addButtons = meal.querySelectorAll('.add-btn');
-        addButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const card = e.target.closest('.meal-card');
-                const dayColumn = e.target.closest('.week-day');
+        const addButtons = meal.querySelectorAll(".add-btn");
+        addButtons.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                const card = e.target.closest(".meal-card");
+                const dayColumn = e.target.closest(".week-day");
 
                 if (!card || !dayColumn) return;
 
-                plannerState.activeGridDay = dayColumn.querySelector('.day-title').innerText.trim();
+                plannerState.activeGridDay = dayColumn
+                    .querySelector(".day-title")
+                    .innerText.trim();
                 plannerState.activeGridMeal = card.id;
 
-                const dialog = document.getElementById('grid-search-dialog');
+                const dialog = document.getElementById("grid-search-dialog");
                 if (dialog) {
-                    const results = document.getElementById('grid-search-results');
-                    if (results) results.innerHTML = '';
-                    const input = document.getElementById('grid-search-query');
-                    if (input) input.value = '';
+                    const results = document.getElementById("grid-search-results");
+                    if (results) results.innerHTML = "";
+                    const input = document.getElementById("grid-search-query");
+                    if (input) input.value = "";
                     dialog.showModal();
                 }
             });
@@ -61,11 +63,22 @@ function resetMeal(e) {
     if (!e || !e.target) return;
 
     const btn = e.target;
-    const card = btn.closest('.meal-card');
+    const card = btn.closest(".meal-card");
+    const dayColumn = btn.closest(".week-day");
     if (!card) return;
 
     // Reset the card back to its empty state
     const mealMoment = card.id;
+    if (dayColumn) {
+        const dayTitleEl = dayColumn.querySelector(".day-title");
+        if (dayTitleEl) {
+            const day = dayTitleEl.innerText.trim();
+            const mealPlan = JSON.parse(localStorage.getItem("mealPlan")) || {};
+            delete mealPlan[`${day}-${mealMoment}`];
+            localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
+        }
+    }
+
     const title = mealMoment.charAt(0).toUpperCase() + mealMoment.slice(1);
 
     card.innerHTML = `${title}
@@ -74,17 +87,19 @@ function resetMeal(e) {
     </button>`;
 
     // Re-attach the search listener
-    const newBtn = card.querySelector('.add-btn');
+    const newBtn = card.querySelector(".add-btn");
     if (newBtn) {
-        newBtn.addEventListener('click', (ev) => {
-            const dayColumn = ev.target.closest('.week-day');
+        newBtn.addEventListener("click", (ev) => {
+            const dayColumn = ev.target.closest(".week-day");
             if (dayColumn) {
-                plannerState.activeGridDay = dayColumn.querySelector('.day-title').innerText.trim();
+                plannerState.activeGridDay = dayColumn
+                    .querySelector(".day-title")
+                    .innerText.trim();
                 plannerState.activeGridMeal = card.id;
-                const dialog = document.getElementById('grid-search-dialog');
+                const dialog = document.getElementById("grid-search-dialog");
                 if (dialog) {
-                    const results = document.getElementById('grid-search-results');
-                    if (results) results.innerHTML = '';
+                    const results = document.getElementById("grid-search-results");
+                    if (results) results.innerHTML = "";
                     dialog.showModal();
                 }
             }
@@ -125,22 +140,22 @@ export function setupSuggestionDialog() {
         </form>
     </dialog>`;
 
-    document.body.insertAdjacentHTML('beforeend', dialogHTML);
-    const dialog = document.getElementById('suggestion-dialog');
-    const form = document.getElementById('suggestion-form');
+    document.body.insertAdjacentHTML("beforeend", dialogHTML);
+    const dialog = document.getElementById("suggestion-dialog");
+    const form = document.getElementById("suggestion-form");
 
     // 2. Listen for 'open-suggestion-dialog' event from templates.js
-    document.addEventListener('open-suggestion-dialog', (e) => {
+    document.addEventListener("open-suggestion-dialog", (e) => {
         plannerState.currentRecipeToAdd = e.detail;
         dialog.showModal();
     });
 
     // 3. Handle Form Submit
-    form.addEventListener('submit', (e) => {
+    form.addEventListener("submit", (e) => {
         e.preventDefault(); // Stop the page from refreshing!
 
-        const day = document.getElementById('day').value;
-        const mealMoment = document.getElementById('meal-moment').value;
+        const day = document.getElementById("day").value;
+        const mealMoment = document.getElementById("meal-moment").value;
 
         if (!plannerState.currentRecipeToAdd) return;
 
@@ -152,10 +167,11 @@ export function setupSuggestionDialog() {
 
 function populateGridCell(day, mealMoment, recipe) {
     // Find the week-day column that matches the selected day
-    const weekDays = document.querySelectorAll('.week-day');
+
+    const weekDays = document.querySelectorAll(".week-day");
     let targetDayElement = null;
-    weekDays.forEach(wd => {
-        const titleEl = wd.querySelector('.day-title');
+    weekDays.forEach((wd) => {
+        const titleEl = wd.querySelector(".day-title");
         if (titleEl && titleEl.innerText.trim() === day) {
             targetDayElement = wd;
         }
@@ -175,26 +191,17 @@ function populateGridCell(day, mealMoment, recipe) {
             </div>`;
 
             // Attach listener to the new "Change" button so it can reset the card
-            const changeBtn = targetMealCard.querySelector('.change-meal-btn');
+            const changeBtn = targetMealCard.querySelector(".change-meal-btn");
             if (changeBtn) {
-                changeBtn.addEventListener('click', resetMeal);
+                changeBtn.addEventListener("click", resetMeal);
             }
-        // Save the selected recipe
-        const mealPlan = JSON.parse(localStorage.getItem("mealPlan")) || {};
 
-        mealPlan[`${day}-${mealMoment}`] = recipe;
-
-        localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
-
-        // Find the day container
-        const weekDays = document.querySelectorAll('.week-day');
-        let targetDayElement = null;
-        weekDays.forEach(wd => {
-            if (wd.querySelector('.day-title').textContent.trim() === day) {
-                targetDayElement = wd;
-            }
-        })
-    }}
+            // Save the selected recipe
+            const mealPlan = JSON.parse(localStorage.getItem("mealPlan")) || {};
+            mealPlan[`${day}-${mealMoment}`] = recipe;
+            localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
+        }
+    }
 }
 
 function setupGridSearchDialog() {
@@ -215,39 +222,43 @@ function setupGridSearchDialog() {
         </div>
     </dialog>`;
 
-    document.body.insertAdjacentHTML('beforeend', dialogHTML);
-    const dialog = document.getElementById('grid-search-dialog');
-    const searchBtn = document.getElementById('grid-search-btn');
-    const searchInput = document.getElementById('grid-search-query');
-    const resultsContainer = document.getElementById('grid-search-results');
+    document.body.insertAdjacentHTML("beforeend", dialogHTML);
+    const dialog = document.getElementById("grid-search-dialog");
+    const searchBtn = document.getElementById("grid-search-btn");
+    const searchInput = document.getElementById("grid-search-query");
+    const resultsContainer = document.getElementById("grid-search-results");
 
     const performSearch = async () => {
         const query = searchInput.value.trim();
         if (!query) return;
 
-        resultsContainer.innerHTML = '<p>Searching...</p>';
+        resultsContainer.innerHTML = "<p>Searching...</p>";
         try {
             const data = await getrecipeData(query);
             const recipes = data.meals;
 
             if (!recipes || recipes.length === 0) {
-                resultsContainer.innerHTML = '<p>No recipes found.</p>';
+                resultsContainer.innerHTML = "<p>No recipes found.</p>";
                 return;
             }
 
-            resultsContainer.innerHTML = '';
-            recipes.forEach(recipe => {
-                const item = document.createElement('div');
-                item.className = 'grid-search-item';
+            resultsContainer.innerHTML = "";
+            recipes.forEach((recipe) => {
+                const item = document.createElement("div");
+                item.className = "grid-search-item";
                 item.innerHTML = `
                     <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}">
                     <span>${recipe.strMeal}</span>
                     <button class="add-btn">Select</button>
                 `;
 
-                item.querySelector('button').addEventListener('click', () => {
+                item.querySelector("button").addEventListener("click", () => {
                     if (plannerState.activeGridDay && plannerState.activeGridMeal) {
-                        populateGridCell(plannerState.activeGridDay, plannerState.activeGridMeal, recipe);
+                        populateGridCell(
+                            plannerState.activeGridDay,
+                            plannerState.activeGridMeal,
+                            recipe,
+                        );
                         dialog.close();
                     }
                 });
@@ -255,7 +266,7 @@ function setupGridSearchDialog() {
                 resultsContainer.appendChild(item);
             });
         } catch (error) {
-            resultsContainer.innerHTML = '<p>Error searching for recipes.</p>';
+            resultsContainer.innerHTML = "<p>Error searching for recipes.</p>";
         }
     };
 
@@ -266,69 +277,73 @@ function setupGridSearchDialog() {
 }
 
 function setupCleanMealPlan() {
-    const cleanBtn = document.getElementById('clean-meal-plan-btn');
-    cleanBtn.addEventListener('click', mealPlanner);
+    const cleanBtn = document.getElementById("clean-meal-plan-btn");
+    if (cleanBtn) {
+        cleanBtn.addEventListener("click", () => {
+            localStorage.removeItem("mealPlan");
+            mealPlanner();
+        });
+    }
 }
 
-
 function PrintMealPlan() {
-    const printBtn = document.getElementById('printBtn');
+    const printBtn = document.getElementById("printBtn");
     if (printBtn) {
-        printBtn.addEventListener('click', () => {
+        printBtn.addEventListener("click", () => {
             window.print();
         });
     }
 }
 
-function generateGroceryList() {
 
-    const mealPlan =
-        JSON.parse(localStorage.getItem("mealPlan")) || {};
+function generateGroceryList() {
+    const mealPlan = JSON.parse(localStorage.getItem("mealPlan")) || {};
 
     const groceryItems = [];
 
-    Object.values(mealPlan).forEach(recipe => {
-
-        for(let i = 1; i <= 20; i++){
-
+    Object.values(mealPlan).forEach((recipe) => {
+        for (let i = 1; i <= 20; i++) {
             const ingredient = recipe[`strIngredient${i}`];
             const measure = recipe[`strMeasure${i}`];
 
-            if(
-                ingredient &&
-                ingredient.trim() !== ""
-            ){
+            if (ingredient && ingredient.trim() !== "") {
                 groceryItems.push({
                     ingredient,
                     measure,
-                    meal: recipe.strMeal
+                    meal: recipe.strMeal,
                 });
             }
-
         }
-
     });
 
-    localStorage.setItem(
-        "groceryList",
-        JSON.stringify(groceryItems)
-    );
+    localStorage.setItem("groceryList", JSON.stringify(groceryItems));
 
     window.location.href = "grocerylist.html";
 }
 
-document
-    .getElementById("generate-grocery-list-btn")
-    .addEventListener("click", generateGroceryList);
+const generateListBtn = document.getElementById("generate-grocery-list-btn");
+if (generateListBtn) {
+    generateListBtn.addEventListener("click", generateGroceryList);
+}
 
 export function initMealPlanner() {
+
     mealPlanner();
+
+    // Load persisted meal plan from localStorage
+    const mealPlan = JSON.parse(localStorage.getItem("mealPlan")) || {};
+    for (const [key, recipe] of Object.entries(mealPlan)) {
+        const [day, mealMoment] = key.split("-");
+        if (day && mealMoment && recipe) {
+            populateGridCell(day, mealMoment, recipe);
+        }
+    }
     setupSearchBar();
-    handleSearch('chicken');
+    handleSearch("chicken");
     setupCleanMealPlan();
     setupSuggestionDialog();
     setupGridSearchDialog();
     PrintMealPlan();
 }
 
-initMealPlanner();  
+initMealPlanner();
