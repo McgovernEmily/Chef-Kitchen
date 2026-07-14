@@ -100,6 +100,18 @@ a:link, a:visited, a:hover, a:active {
     flex: 1;
 }
 
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .features-section {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .hero {
+        padding: 0 10px;
+    }
+}
+
 /* Grocery Tables */
 .food-types {
     width: 100%;
