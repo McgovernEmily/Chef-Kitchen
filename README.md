@@ -4,4 +4,4 @@ It will be a web app that has a list of recipes that users will be able to sort 
 **API Used:** This application uses [TheMealDB](https://www.themealdb.com/api.php) to fetch recipe data. (Previously used Spoonacular API, but migrated due to rate-limiting constraints).
 
 Here is the link to the Netlify
-[Chef-Kitchen](https://luminous-faun-1d1ecb.netlify.app/grocerylist.html)
+[Chef-Kitchen](https://luminous-faun-1d1ecb.netlify.app/index.html)
