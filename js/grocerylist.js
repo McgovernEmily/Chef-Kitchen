@@ -4,6 +4,7 @@ const totalSummary = document.getElementById("total-summary");
 
 function loadGroceryList() {
 
+
     tbody.innerHTML = "";
 
     const groceryList =
@@ -12,6 +13,7 @@ function loadGroceryList() {
     let totalMeals = groceryList.map(item => item.meal).filter((value, index, self) => 
         self.indexOf(value) === index).length;
     let totalIngredients = 0
+    let totalPrice = 0;
 
 
     groceryList.forEach((item, index) => {
@@ -22,6 +24,7 @@ function loadGroceryList() {
             <td>${item.ingredient}</td>
             <td>${item.measure}</td>
             <td>${item.meal}</td>
+            <td>$${Number(item.price || 0).toFixed(2)}</td>
             <td>
                 <button class="delete-btn" data-index="${index}">
                     🗑️
@@ -31,7 +34,7 @@ function loadGroceryList() {
         `;
 
         totalIngredients += 1;
-
+        totalPrice += Number(item.price);
     });
 
     document.querySelectorAll(".delete-btn")
@@ -49,6 +52,7 @@ function loadGroceryList() {
         <h2>Grocery List Summary</h2>
         <p>Total Meals: ${totalMeals}</p>
         <p>Total Ingredients: ${totalIngredients}</p>
+        <p><strong>Estimated Cost: $${totalPrice.toFixed(2)}</strong></p>
         <h3>Meals</h3>
         <ul>
             ${[...new Set(groceryList.map(item => item.meal))]
