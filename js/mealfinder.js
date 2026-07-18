@@ -13,6 +13,8 @@ export function displayRecipeDetails(recipe) {
     localStorage.setItem('lastViewedDish', JSON.stringify(recipe));
 
     const mealImage = document.querySelector('.meal-image');
+    if (!mealImage) return; // Prevent errors on pages without this element
+
     const mealTitle = document.querySelector('.meal-details-header');
 
     // Remove the animation, force a reflow, and add it back to re-trigger it
@@ -37,6 +39,9 @@ export function initMealFinder() {
     const ingredientsButton = document.querySelector('.ingredients-button');
     const reviewsButton = document.querySelector('.reviews-button');
     const mealDetailSection = document.querySelector('.meal-detail-section');
+
+    // If we're not on the mealfinder page, do not run the rest of the initialization
+    if (!mealDetailSection) return;
 
     if (overviewButton) {
         overviewButton.addEventListener('click', () => {

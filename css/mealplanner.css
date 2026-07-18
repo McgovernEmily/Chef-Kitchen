@@ -468,22 +468,27 @@
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
    #main {
+      width: 100%;
       margin: 1rem 1rem;
       padding: 1.5rem;
    }
-   
+
+   .week-day {
+      min-width: 150px;
+   }
+
    .schedule-grid {
       grid-template-columns: 1fr;
-      margin: 1rem;
    }
-   
+
    .meal-planner-container {
-      gap: 1.5rem;
+      gap: 1rem;
    }
-   
+
    .recipe-suggestions-container {
-      margin: 1rem;
+      display: none;
+      /* I removed it because it has a similar purpose as the recipe search page. */
    }
 }

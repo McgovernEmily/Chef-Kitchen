@@ -74,13 +74,18 @@ async function loadImages() {
         { id: "52770", imageId: "italian-image" }
     ];
 
+    // Check if we are on the homepage before making API calls
+    if (!document.getElementById("vegetarian-image")) return;
+
     for (const recipe of recipeIds) {
         const data = await getRecipeById(recipe.id);
         if (data.meals) {
-            document.getElementById(recipe.imageId).src = data.meals[0].strMealThumb;
+            const imgEl = document.getElementById(recipe.imageId);
+            if (imgEl) {
+                imgEl.src = data.meals[0].strMealThumb;
+            }
         }
     }
-
 }
 
 loadImages();
