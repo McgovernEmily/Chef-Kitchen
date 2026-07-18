@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal Planner - Chef-Kitchen</title>
+    <meta name="description" content="Create a weekly meal plan and automatically generate your grocery list.">
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="stylesheet" href="css/mealplanner.css">
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/mealplanner.js"></script>
     <link rel="stylesheet" href="css/recipe-cards.css">
     <link rel="stylesheet" href="css/dialog.css">
+    <link rel="stylesheet" href="css/mealplanner.css">
 </head>
 
 <body>
@@ -80,7 +81,9 @@
             </div>
             <div class="recipe-suggestions-container">
                 <h2>🔍 Recipe Suggestions</h2>
-                <label for="recipe-search" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Search recipes</label>
+                <label for="recipe-search" class="visually-hidden"
+                    style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Search
+                    recipes</label>
                 <input type="search" id="recipe-search" placeholder="Search for a recipe">
                 <div class="recipe-suggestion-cards">
                     <!-- Recipe cards will be dynamically inserted here -->
