@@ -6,24 +6,6 @@ const modalMessage = document.getElementById("modalMessage");
 const closeModal = document.getElementById("closeModal");
 const fields = document.querySelectorAll(".form-group input, .form-group textarea");
 
-fields.forEach((field, index) => {
-
-    field.addEventListener("blur", () => {
-
-        if(field.value.trim() !== ""){
-
-            const next = fields[index + 1];
-
-            if(next){
-                next.parentElement.classList.add("show");
-            }
-
-        }
-
-    });
-
-});
-
 function showModal(title, message){
 
     modalTitle.textContent = title;

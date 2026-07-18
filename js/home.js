@@ -65,7 +65,7 @@ export function footerFunction() {
     `;
 }
 
-async function loadImages() {
+export async function loadImages() {
     const recipeIds = [
         { id: "52779", imageId: "vegetarian-image" },
         { id: "52956", imageId: "soup-image" },
@@ -82,5 +82,3 @@ async function loadImages() {
     }
 
 }
-
-loadImages();

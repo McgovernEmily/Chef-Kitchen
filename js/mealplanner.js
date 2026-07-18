@@ -1,6 +1,5 @@
 import { handleSearch, setupSearchBar } from "./templates.js";
 import { getrecipeData } from "./recipedata.js";
-import {calculatecost} from "./calcost.js";
 
 export const plannerState = {
     activeGridDay: null,
@@ -306,7 +305,6 @@ function generateGroceryList() {
         for (let i = 1; i <= 20; i++) {
             const ingredient = recipe[`strIngredient${i}`];
             const measure = recipe[`strMeasure${i}`];
-            const cost = calculatecost(ingredient, measure);
 
             if (ingredient && ingredient.trim() !== "") {
 
@@ -314,7 +312,6 @@ function generateGroceryList() {
                     ingredient,
                     measure,
                     meal: recipe.strMeal,
-                    price: cost
                 });
             }
         }

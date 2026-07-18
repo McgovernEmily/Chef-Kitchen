@@ -133,24 +133,6 @@
     animation:fadeUp .8s ease;
 }
 
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-        transform:translateY(30px);
-
-    }
-
-    to{
-
-        opacity:1;
-        transform:translateY(0);
-
-    }
-
-}
-
 .modal{
     position:fixed;
     inset:0;
@@ -225,22 +207,6 @@
 
 .modal-content p{
     margin-bottom:25px;
-}
-
-.form-group:first-child{
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.form-group{
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: opacity .4s ease, transform .4s ease;
-}
-
-.form-group.show{
-    opacity: 1;
-    transform: translateX(0);
 }
 
 /* Mobile Responsiveness */
