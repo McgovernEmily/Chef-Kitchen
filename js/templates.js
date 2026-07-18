@@ -44,7 +44,7 @@ export function renderRecipeCards(recipesList) {
         recipeCard.innerHTML = `
         <div class="recipe-container">
             <div class="recipe-image">
-                <img src="${imageUrl}" alt="${title}">
+                <img src="${imageUrl}" alt="${title}" loading="lazy">
             </div>
             <div class="recipe-content">
                 <h3 class="recipe-title">${title}</h3>
@@ -103,7 +103,7 @@ export function renderSuggestions(recipesList) {
         suggestionCard.innerHTML = `
         <div class="recipe-container">
             <div class="recipe-image">
-                <img src="${imageUrl}" alt="${title}">
+                <img src="${imageUrl}" alt="${title}" loading="lazy">
             </div>
             <div class="recipe-content">
                 <h3 class="recipe-title">${title}</h3>
