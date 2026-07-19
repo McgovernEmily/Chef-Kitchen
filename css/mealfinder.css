@@ -182,6 +182,13 @@
     animation-fill-mode: forwards;
 }
 
+.clear-filters-button {
+    color: white;
+}
+.apply-filters-button{
+    color: white;
+}
+
 @keyframes RecipeSlide {
     0% {
         transform: translateX(-100px);

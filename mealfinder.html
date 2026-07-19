@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/mealfinder.css">
     <link rel="stylesheet" href="css/recipe-cards.css">
     <script type="module" src="./js/mealfinder.js"></script>
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/main.js" defer></script>
 </head>
 
 <body>
@@ -30,22 +30,6 @@
             </div>
 
             <div class="filter-controls">
-                <label for="category-filter" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Category</label>
-                <select id="category-filter" name="category" aria-label="Category">
-                    <option value="">Category</option>
-                    <option value="Vegetarian">Vegetarian</option>
-                    <option value="Vegan">Vegan</option>
-                    <option value="Gluten Free">Gluten Free</option>
-                    <option value="Dairy Free">Dairy Free</option>
-                    <option value="Nut Free">Nut Free</option>
-                    <option value="Shellfish Free">Shellfish Free</option>
-                    <option value="Soy Free">Soy Free</option>
-                    <option value="Egg Free">Egg Free</option>
-                    <option value="Low Carb">Low Carb</option>
-                    <option value="Keto">Keto</option>
-                    <option value="Paleo">Paleo</option>
-                    <option value="Whole30">Whole30</option>
-                </select>
                 <label for="meal-type-filter" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Meal Type</label>
                 <select id="meal-type-filter" name="meal-type" aria-label="Meal Type">
                     <option value="">Meal Type</option>

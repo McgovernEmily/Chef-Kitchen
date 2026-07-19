@@ -79,6 +79,10 @@
    cursor: pointer;
 }
 
+#printBtn {
+   color: white;
+}
+
 #clean-meal-plan-btn {
    background-color: transparent;
    color: var(--text-light);
@@ -106,7 +110,7 @@
 }
 
 #generate-grocery-list-btn {
-   background: linear-gradient(135deg, var(--secondary), #e05220);
+   background: linear-gradient(135deg, var(--secondary), #4A5D23);
    color: white;
    box-shadow: 0 4px 12px rgba(211, 97, 53, 0.3);
 }
@@ -343,6 +347,7 @@
 
 .grid-search-btn-style {
    padding: 8px 16px;
+   color: white;
 }
 
 #grid-search-results {

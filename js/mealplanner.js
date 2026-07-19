@@ -183,7 +183,7 @@ function populateGridCell(day, mealMoment, recipe) {
             targetMealCard.innerHTML = `
             <div class="meal-moment-title">${mealMoment}</div>
             <div class="meal-content-preview">
-                <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}" loading="lazy">
+                <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}">
             </div>
             <div class="meal-footer-preview">
                 <h3 class="recipe-name">${recipe.strMeal}</h3>
@@ -247,7 +247,7 @@ function setupGridSearchDialog() {
                 const item = document.createElement("div");
                 item.className = "grid-search-item";
                 item.innerHTML = `
-                    <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}" loading="lazy">
+                    <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}">
                     <span>${recipe.strMeal}</span>
                     <button class="add-btn">Select</button>
                 `;
@@ -346,5 +346,7 @@ export function initMealPlanner() {
     setupGridSearchDialog();
     PrintMealPlan();
 }
+
+
 
 initMealPlanner();

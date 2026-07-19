@@ -107,6 +107,8 @@ header h1 {
 }
 
 /* footer ---------------------------------------------------------------------------------*/
+
+
 .modern-footer {
     background: linear-gradient(135deg, var(--primary) 0%, #2c3a14 100%);
     color: white;
@@ -134,6 +136,7 @@ header h1 {
     grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: 40px;
     padding: 0;
+    flex: 0 0 auto;
 }
 
 .footer-brand {
@@ -241,6 +244,10 @@ header h1 {
     margin: 0;
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.6);
+}
+
+main{
+    flex: 1;
 }
 
 /* buttons, inputs and selectors --------------------------------------------------------------------------------------------- */

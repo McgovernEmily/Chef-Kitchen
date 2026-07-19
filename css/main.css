@@ -88,7 +88,7 @@ a:link, a:visited, a:hover, a:active {
 
 /* features */
 .features-section {
-    background-color: #ece6da;
+     background-color: #ece6da;
     margin-top: 40px;
     padding: 30px;
     border-radius: 10px;
@@ -98,6 +98,24 @@ a:link, a:visited, a:hover, a:active {
 
 .feature {
     flex: 1;
+}
+
+.feature a,
+.feature a:visited,
+.feature a:hover,
+.feature a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.feature-img {
+    text-align: center;
+}
+
+.feature-img img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
 }
 
 /* Mobile Responsiveness */

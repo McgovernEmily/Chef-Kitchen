@@ -19,7 +19,7 @@ function loadGroceryList() {
 
         tbody.innerHTML += `
         <tr>
-            <td><input type="checkbox"></td>
+            <td><input type="checkbox" aria-label="Mark ${item.ingredient} as purchased"></td>
             <td>${item.ingredient}</td>
             <td>${item.measure}</td>
             <td>${item.meal}</td>

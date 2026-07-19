@@ -171,7 +171,6 @@ function handleFilterButtonClick() {
     if (applyFiltersButton) {
         applyFiltersButton.addEventListener('click', async () => {
             // Read values INSIDE the click event so we get the current selections
-            const category = document.querySelector('select[name="category"]').value;
             const mealType = document.querySelector('select[name="meal-type"]').value;
             const country = document.querySelector('select[name="country"]').value;
 
@@ -186,12 +185,6 @@ function handleFilterButtonClick() {
                 if (filteredRecipes.length > 0) {
                     filteredRecipes = filteredRecipes.filter(recipe => {
                         let matches = true;
-
-                        if (category) {
-                            const tags = recipe.strTags ? recipe.strTags.toLowerCase() : "";
-                            const cat = recipe.strCategory ? recipe.strCategory.toLowerCase() : "";
-                            matches = matches && (tags.includes(category.toLowerCase()) || cat.includes(category.toLowerCase()));
-                        }
 
                         if (mealType) {
                             const cat = recipe.strCategory ? recipe.strCategory.toLowerCase() : "";
@@ -219,7 +212,6 @@ function handleFilterButtonClick() {
     if (clearFiltersButton) {
         clearFiltersButton.addEventListener('click', () => {
             // Reset dropdowns
-            document.querySelector('select[name="category"]').value = "";
             document.querySelector('select[name="meal-type"]').value = "";
             document.querySelector('select[name="country"]').value = "";
 
