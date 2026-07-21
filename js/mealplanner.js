@@ -339,7 +339,7 @@ export function initMealPlanner() {
             populateGridCell(day, mealMoment, recipe);
         }
     }
-    setupSearchBar();
+    setupSearchBar({ selector: "#recipe-search" });
     handleSearch("chicken");
     setupCleanMealPlan();
     setupSuggestionDialog();

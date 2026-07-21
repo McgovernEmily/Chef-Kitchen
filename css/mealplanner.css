@@ -8,6 +8,7 @@
    flex-wrap: wrap;
    justify-content: space-between;
    align-items: center;
+   box-sizing: border-box;
    margin: 2rem 4rem;
    padding: 2rem;
    background: rgba(255, 255, 255, 0.8);
@@ -24,6 +25,7 @@
    gap: 3rem;
    align-items: center;
    flex: 1;
+   min-width: 0;
 }
 
 .meal-planner-title {
@@ -475,9 +477,9 @@
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
    #main {
-      width: 100%;
+      width: auto;
       margin: 1rem 1rem;
-      padding: 1.5rem;
+      padding: 1rem;
    }
 
    .week-day {
@@ -490,6 +492,14 @@
 
    .meal-planner-container {
       gap: 1rem;
+   }
+
+   .meal-planner-actions {
+      width: 100%;
+   }
+
+   .meal-planner-actions button {
+      flex: 1 1 100%;
    }
 
    .recipe-suggestions-container {

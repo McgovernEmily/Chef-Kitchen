@@ -14,5 +14,8 @@ const navigation = document.getElementById("page-nav");
 if (hamburger && navigation) {
     hamburger.addEventListener("click", () => {
         navigation.classList.toggle("show");
+        const isExpanded = navigation.classList.contains("show");
+        hamburger.setAttribute("aria-expanded", isExpanded.toString());
+        hamburger.setAttribute("aria-label", isExpanded ? "Close navigation menu" : "Open navigation menu");
     });
 }

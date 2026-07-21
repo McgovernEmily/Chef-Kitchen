@@ -133,27 +133,24 @@
     animation:fadeUp .8s ease;
 }
 
-.modal{
-    position:fixed;
-    inset:0;
-
-    background:rgba(0,0,0,.6);
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:.3s ease;
-
-    z-index:1000;
+.modal {
+    border: none;
+    padding: 0;
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    max-height: none;
+    background: transparent;
 }
 
-.modal.show{
-    opacity:1;
-    visibility:visible;
+.modal[open] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal::backdrop {
+    background: rgba(0,0,0,.6);
 }
 
 .modal-content{
@@ -194,7 +191,7 @@
 
 }
 
-.modal.show .modal-content{
+.modal[open] .modal-content{
     transform:translateY(0);
 }
 

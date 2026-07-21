@@ -1,9 +1,8 @@
 import { getrecipeData } from "./recipedata.js";
-import { displayRecipeDetails } from "./mealfinder.js";
 import descriptions from "./descriptions.json";
 
 // This function handles getting the data and passing it to the render function
-export async function handleSearch(query = "") {
+export async function handleSearch(query = "", options = {}) {
     try {
         const data = await getrecipeData(query);
 
@@ -11,7 +10,7 @@ export async function handleSearch(query = "") {
         const recipes = data.meals;
 
         // Pass that array to our render function
-        renderRecipeCards(recipes);
+        renderRecipeCards(recipes, options.onViewRecipe);
         renderSuggestions(recipes);
     } catch (error) {
         console.error("Error fetching recipes:", error);
@@ -20,7 +19,7 @@ export async function handleSearch(query = "") {
 
 /* This code snippet handles the rendering of the recipe cards */
 
-export function renderRecipeCards(recipesList) {
+export function renderRecipeCards(recipesList, onViewRecipe) {
     const recipeCardsContainer = document.querySelector('.recipe-cards');
 
     if (!recipeCardsContainer) return;
@@ -58,7 +57,12 @@ export function renderRecipeCards(recipesList) {
 
         const viewButton = recipeCard.querySelector('.add-to-cart-button');
         viewButton.addEventListener('click', () => {
-            displayRecipeDetails(recipe);
+            if (typeof onViewRecipe === 'function') {
+                onViewRecipe(recipe);
+                return;
+            }
+
+            document.dispatchEvent(new CustomEvent('view-recipe-details', { detail: recipe }));
         });
 
         recipeCardsContainer.appendChild(recipeCard);
@@ -67,12 +71,12 @@ export function renderRecipeCards(recipesList) {
 
 
 // Setup event listener for the search input
-export function setupSearchBar() {
-    const searchInput = document.querySelector('.search-bar input');
+export function setupSearchBar(options = {}) {
+    const searchInput = document.querySelector(options.selector || '.search-bar input');
     if (searchInput) {
-        searchInput.addEventListener('keypress', (event) => {
+        searchInput.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-                handleSearch(searchInput.value);
+                handleSearch(searchInput.value, { onViewRecipe: options.onViewRecipe });
             }
         });
     }
@@ -126,4 +130,3 @@ export function renderSuggestions(recipesList) {
         suggestionCardsContainer.appendChild(suggestionCard);
     });
 }
-

@@ -1,12 +1,18 @@
 import { getrecipeData, getRecipeById } from "./recipedata.js";
 import { footerFunction, headerFunction } from "./home.js";
+import { handleSearch, renderRecipeCards, setupSearchBar } from "./templates.js";
 import longDescriptions from "./long_descriptions.json";
 
+const DEFAULT_SEARCH = 'chicken';
 
 /* This code snippet handles the display of the recipe details */
 export let currentRecipe = null;
 
 export function displayRecipeDetails(recipe) {
+    if (!recipe || !recipe.strMeal) {
+        showRecipeMessage('Recipe not found', 'Select another recipe or try a new search.');
+        return;
+    }
 
     currentRecipe = recipe;
 
@@ -22,16 +28,47 @@ export function displayRecipeDetails(recipe) {
     mealImage.offsetHeight; /* trigger reflow */
     mealImage.style.animation = null;
 
-    mealImage.innerHTML = `
-    <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}">
-    `;
+    mealImage.replaceChildren();
+    if (recipe.strMealThumb) {
+        const img = document.createElement('img');
+        img.src = recipe.strMealThumb;
+        img.alt = recipe.strMeal;
+        mealImage.appendChild(img);
+    }
 
-    mealTitle.innerHTML = `
-    <h2>${recipe.strMeal}</h2>
-    `;
+    mealTitle.replaceChildren();
+    const heading = document.createElement('h2');
+    heading.textContent = recipe.strMeal;
+    mealTitle.appendChild(heading);
 
     const overviewButton = document.querySelector('.overview-button');
     if (overviewButton) overviewButton.click();
+}
+
+function showRecipeMessage(title, message) {
+    currentRecipe = null;
+
+    const mealTitle = document.querySelector('.meal-details-header');
+    const mealImage = document.querySelector('.meal-image');
+    const mealDetailSection = document.querySelector('.meal-detail-section');
+
+    if (mealTitle) {
+        mealTitle.replaceChildren();
+        const heading = document.createElement('h2');
+        heading.textContent = title;
+        mealTitle.appendChild(heading);
+    }
+
+    if (mealImage) {
+        mealImage.replaceChildren();
+    }
+
+    if (mealDetailSection) {
+        mealDetailSection.replaceChildren();
+        const paragraph = document.createElement('p');
+        paragraph.textContent = message;
+        mealDetailSection.appendChild(paragraph);
+    }
 }
 
 export function initMealFinder() {
@@ -124,44 +161,59 @@ export function initMealFinder() {
     }
 
 
-    import('./templates.js').then(async module => {
-        module.setupSearchBar(); // Initialize the search bar listener since it's on this page
+    document.addEventListener('view-recipe-details', (event) => {
+        displayRecipeDetails(event.detail);
+    });
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const mealId = urlParams.get('id');
+    setupSearchBar({ onViewRecipe: displayRecipeDetails }); // Initialize the search bar listener since it's on this page
 
-        if (mealId) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const mealId = urlParams.get('id');
+
+    if (mealId) {
+        loadRecipeFromUrl(mealId);
+    } else {
+        handleSearch(DEFAULT_SEARCH, { onViewRecipe: displayRecipeDetails });
+
+        const cachedDish = localStorage.getItem('lastViewedDish');
+        if (cachedDish) {
             try {
-                const data = await getRecipeById(mealId);
-                if (data.meals && data.meals.length > 0) {
-                    const recipe = data.meals[0];
-                    displayRecipeDetails(recipe);
-                    module.handleSearch(recipe.strCategory || 'chicken');
-                } else {
-                    module.handleSearch('chicken');
-                }
+                const recipe = JSON.parse(cachedDish);
+                displayRecipeDetails(recipe);
             } catch (error) {
-                console.error("Error fetching recipe by ID:", error);
-                module.handleSearch('chicken');
-            }
-        } else {
-            module.handleSearch('chicken');
-
-            const cachedDish = localStorage.getItem('lastViewedDish');
-            if (cachedDish) {
-                try {
-                    const recipe = JSON.parse(cachedDish);
-                    displayRecipeDetails(recipe);
-                } catch (error) {
-                    console.error('Error parsing cached dish:', error);
-                }
+                console.error('Error parsing cached dish:', error);
             }
         }
-    });
+    }
 
     footerFunction();
     headerFunction();
     handleFilterButtonClick();
+}
+
+async function loadRecipeFromUrl(mealId) {
+    if (!/^\d+$/.test(mealId)) {
+        showRecipeMessage('Recipe not found', `No recipe matches the id "${mealId}". Try searching for a meal instead.`);
+        handleSearch(DEFAULT_SEARCH, { onViewRecipe: displayRecipeDetails });
+        return;
+    }
+
+    try {
+        const data = await getRecipeById(mealId);
+        const recipe = data.meals?.[0];
+
+        if (recipe?.strMeal) {
+            displayRecipeDetails(recipe);
+            handleSearch(DEFAULT_SEARCH, { onViewRecipe: displayRecipeDetails });
+        } else {
+            showRecipeMessage('Recipe not found', `No recipe matches the id "${mealId}". Try searching for a meal instead.`);
+            handleSearch(DEFAULT_SEARCH, { onViewRecipe: displayRecipeDetails });
+        }
+    } catch (error) {
+        console.error("Error fetching recipe by ID:", error);
+        showRecipeMessage('Recipe not found', 'The recipe could not be loaded. Try searching for a meal instead.');
+        handleSearch(DEFAULT_SEARCH, { onViewRecipe: displayRecipeDetails });
+    }
 }
 
 function handleFilterButtonClick() {
@@ -200,9 +252,7 @@ function handleFilterButtonClick() {
                 }
 
                 // Use the template module to render the cards
-                import('./templates.js').then(module => {
-                    module.renderRecipeCards(filteredRecipes);
-                });
+                renderRecipeCards(filteredRecipes, displayRecipeDetails);
             } catch (error) {
                 console.error("Error filtering recipes:", error);
             }
@@ -219,9 +269,7 @@ function handleFilterButtonClick() {
             const searchInput = document.querySelector('.search-bar input');
             const searchQuery = searchInput ? searchInput.value.trim() : "chicken";
 
-            import('./templates.js').then(module => {
-                module.handleSearch(searchQuery || 'chicken');
-            });
+            handleSearch(searchQuery || DEFAULT_SEARCH, { onViewRecipe: displayRecipeDetails });
         });
     }
 }

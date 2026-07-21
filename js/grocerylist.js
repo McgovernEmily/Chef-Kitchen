@@ -24,7 +24,7 @@ function loadGroceryList() {
             <td>${item.measure}</td>
             <td>${item.meal}</td>
             <td>
-                <button class="delete-btn" data-index="${index}">
+                <button class="delete-btn" data-index="${index}" aria-label="Delete ${item.ingredient} from grocery list">
                     🗑️
                 </button>
             </td>

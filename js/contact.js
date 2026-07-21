@@ -4,21 +4,43 @@ const modal = document.getElementById("messageModal");
 const modalTitle = document.getElementById("modalTitle");
 const modalMessage = document.getElementById("modalMessage");
 const closeModal = document.getElementById("closeModal");
-const fields = document.querySelectorAll(".form-group input, .form-group textarea");
+let previousFocus = null;
 
 function showModal(title, message){
 
     modalTitle.textContent = title;
     modalMessage.textContent = message;
+    previousFocus = document.activeElement && document.activeElement !== document.body ? document.activeElement : submitBtn;
 
-    modal.classList.add("show");
+    if (typeof modal.showModal === "function") {
+        modal.showModal();
+    } else {
+        modal.setAttribute("open", "");
+    }
+
+    closeModal.focus();
 
 }
 
-closeModal.addEventListener("click", () => {
+function closeMessageModal() {
+    if (modal.open && typeof modal.close === "function") {
+        modal.close();
+    } else {
+        modal.removeAttribute("open");
+    }
+}
 
-    modal.classList.remove("show");
+closeModal.addEventListener("click", closeMessageModal);
 
+modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        closeMessageModal();
+    }
+});
+
+modal.addEventListener("close", () => {
+    const restoreTarget = previousFocus?.isConnected && !previousFocus.disabled ? previousFocus : submitBtn;
+    requestAnimationFrame(() => restoreTarget?.focus());
 });
 
 form.addEventListener("submit",(e)=>{

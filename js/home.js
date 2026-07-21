@@ -7,7 +7,7 @@ export function headerFunction() {
         <p class="tagline">Find Meals. Plan Smart. Cook Easy</p>
 
         <div class="menu-container">
-            <button class="hamburger" id="hamburger">☰</button>
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-controls="page-nav" aria-expanded="false">☰</button>
             <section id="nav">
                 <nav class="page-nav" id="page-nav">
                     <ul>
